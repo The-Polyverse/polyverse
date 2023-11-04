@@ -4,6 +4,6 @@ import viteConfig from './vite.config'
 export default mergeConfig(viteConfig, defineConfig({
   test: {
     includeSource: ['src/**/*.{jsx?,tsx?}'],
-    environment: 'happy-dom'
+    //environment: 'happy-dom'
   }
 })) 

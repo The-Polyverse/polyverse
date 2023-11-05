@@ -1966,6 +1966,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@gisatcz/cross-package-react-context@npm:^0.2.0":
+  version: 0.2.0
+  resolution: "@gisatcz/cross-package-react-context@npm:0.2.0"
+  peerDependencies:
+    react: ^16.13.1 || ^17.0.2 || ^18.1.0
+  checksum: 4342fe5c5f694f1478f336829dc411807443122f28e5b6d23a21723add1f66158d4c4773cff35e96af5176e64928b1a1a212b4c844b7a01df66302dc56f26f73
+  languageName: node
+  linkType: hard
+
 "@humanwhocodes/config-array@npm:^0.11.13":
   version: 0.11.13
   resolution: "@humanwhocodes/config-array@npm:0.11.13"
@@ -3899,6 +3908,67 @@ __metadata:
     "@types/express": "npm:^4.7.0"
     file-system-cache: "npm:2.3.0"
   checksum: 482ee61ebdce9f04a2d5f839e2da5653bab63cf0c9acda6a7a7876fd16ae32f1db9a979358343495d979af266c5c1fbd7dffae17c7910118877cc3daca7e4337
+  languageName: node
+  linkType: hard
+
+"@tanstack/history@npm:0.0.1-beta.204":
+  version: 0.0.1-beta.204
+  resolution: "@tanstack/history@npm:0.0.1-beta.204"
+  checksum: 763ee092cbc3ebfaa2b3f106f71fad89d5fe63f61182cc79ce9a19a8be3895e17f7542a7e09ef7b936ed9740884f7d636d62c16591c858dc81fdc475e62bcf96
+  languageName: node
+  linkType: hard
+
+"@tanstack/react-router@npm:^0.0.1-beta.204":
+  version: 0.0.1-beta.204
+  resolution: "@tanstack/react-router@npm:0.0.1-beta.204"
+  dependencies:
+    "@babel/runtime": "npm:^7.16.7"
+    "@gisatcz/cross-package-react-context": "npm:^0.2.0"
+    "@tanstack/react-store": "npm:^0.0.1"
+    "@tanstack/router-core": "npm:0.0.1-beta.204"
+    tiny-invariant: "npm:^1.3.1"
+    tiny-warning: "npm:^1.0.3"
+  peerDependencies:
+    react: ">=16"
+    react-dom: ">=16"
+  checksum: f2c7345c2a5fb2417446ea86fa545aee9267c96320212bdaa368f669dbc262a8649ffaa669a2b35bdde45eeef77333b15df72c25da4720bee80ec8b4a79037f5
+  languageName: node
+  linkType: hard
+
+"@tanstack/react-store@npm:^0.0.1":
+  version: 0.0.1
+  resolution: "@tanstack/react-store@npm:0.0.1"
+  dependencies:
+    "@tanstack/store": "npm:0.0.1"
+    use-sync-external-store: "npm:^1.2.0"
+  peerDependencies:
+    react: ">=16"
+    react-dom: ">=16"
+  checksum: f2d08fb3ad4711377861bb12286822110d813694316e94b680dba142bf49d2c7ef80aafe2cad46b58927361b7a16897d5263a8cacfa4e3d00797f59273e6efc9
+  languageName: node
+  linkType: hard
+
+"@tanstack/router-core@npm:0.0.1-beta.204":
+  version: 0.0.1-beta.204
+  resolution: "@tanstack/router-core@npm:0.0.1-beta.204"
+  dependencies:
+    "@babel/runtime": "npm:^7.16.7"
+    "@gisatcz/cross-package-react-context": "npm:^0.2.0"
+    "@tanstack/history": "npm:0.0.1-beta.204"
+    "@tanstack/store": "npm:^0.0.1"
+    tiny-invariant: "npm:^1.3.1"
+    tiny-warning: "npm:^1.0.3"
+  peerDependencies:
+    react: ">=16"
+    react-dom: ">=16"
+  checksum: 0f8303ff6407ce32bd476bd5b38d7ca60128b7028a423fa30e5b1a403d725647f7864fd648c9232aadff11c2e747cf7c2dfacb35ac0a9536efcbc814f67971ed
+  languageName: node
+  linkType: hard
+
+"@tanstack/store@npm:0.0.1, @tanstack/store@npm:^0.0.1":
+  version: 0.0.1
+  resolution: "@tanstack/store@npm:0.0.1"
+  checksum: 3aea9c8dc4e57da83bcaf32c28a213dc01a9b5852340621a51a151595d5ede79edde72e27d7e61333fc246e014deacad5186a560842d30da182caf644fd0b437
   languageName: node
   linkType: hard
 
@@ -9707,6 +9777,7 @@ __metadata:
     "@storybook/react": "npm:^7.5.2"
     "@storybook/react-vite": "npm:^7.5.2"
     "@storybook/testing-library": "npm:^0.2.2"
+    "@tanstack/react-router": "npm:^0.0.1-beta.204"
     "@types/react": "npm:^18.2.15"
     "@types/react-dom": "npm:^18.2.7"
     "@typescript-eslint/eslint-plugin": "npm:^6.0.0"
@@ -11910,6 +11981,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"tiny-warning@npm:^1.0.3":
+  version: 1.0.3
+  resolution: "tiny-warning@npm:1.0.3"
+  checksum: ef8531f581b30342f29670cb41ca248001c6fd7975ce22122bd59b8d62b4fc84ad4207ee7faa95cde982fa3357cd8f4be650142abc22805538c3b1392d7084fa
+  languageName: node
+  linkType: hard
+
 "tinybench@npm:^2.5.0":
   version: 2.5.1
   resolution: "tinybench@npm:2.5.1"
@@ -12410,7 +12488,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"use-sync-external-store@npm:^1.0.0":
+"use-sync-external-store@npm:^1.0.0, use-sync-external-store@npm:^1.2.0":
   version: 1.2.0
   resolution: "use-sync-external-store@npm:1.2.0"
   peerDependencies:

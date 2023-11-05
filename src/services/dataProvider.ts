@@ -27,7 +27,8 @@ export default function createDataProvider(store: Store): DataProvider {
     create: async <TData extends BaseRecord>({ resource, variables }: { resource: string, variables: unknown }): Promise<CreateResponse<TData>> => {
       if (resource === 'messages') {
         store.dispatch(actions.addMessage(variables as Message));
-        const id = selectMessageIds(store.getState()) as unknown;
+        const ids = selectMessageIds(store.getState());
+        const id = ids[ids.length - 1];
         return { data: { id, ...variables as object} as TData };
       }
       return { data: {} as TData };

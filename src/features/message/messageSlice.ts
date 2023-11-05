@@ -9,11 +9,12 @@ export default function createMessagesSlice(preloadedState = {}) {
     name: 'messages',
     initialState: initialState,
     reducers: {
-      addMessage: (state, action) => {
-        return messagesAdapter.addOne(state, { id: '3', ...action.payload });
-      },
+      addMessage: messagesAdapter.addOne,
       updateMessage: messagesAdapter.updateOne,
       removeMessage: messagesAdapter.removeOne,
+      addMessages: messagesAdapter.addMany,
+      updateMessages: messagesAdapter.updateMany,
+      removeMessages: messagesAdapter.removeMany,
     },
   });
 }

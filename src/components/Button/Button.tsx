@@ -3,7 +3,8 @@ import { useButton } from "react-aria";
 
 export type ButtonProps = {
   children: React.ReactNode;
-};
+  [key: string]: unknown;
+}
 
 export default function Button({ children, ...props }: ButtonProps) {
   const ref = useRef<HTMLButtonElement>(null);

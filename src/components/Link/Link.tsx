@@ -2,9 +2,9 @@ import { useRef } from "react";
 import { useLink } from "react-aria";
 
 export type LinkProps = {
-  href: string;
   children: React.ReactNode;
-};
+  [key: string]: unknown;
+}
 
 export default function Link({ children, ...props }: LinkProps) {
   const ref = useRef<HTMLAnchorElement>(null);

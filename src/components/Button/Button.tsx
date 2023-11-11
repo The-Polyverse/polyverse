@@ -1,10 +1,7 @@
-import { useRef } from "react";
-import { useButton } from "react-aria";
+import { HTMLAttributes, useRef } from "react";
+import { AriaButtonProps, useButton } from "react-aria";
 
-export type ButtonProps = {
-  children: React.ReactNode;
-  [key: string]: unknown;
-}
+export type ButtonProps = AriaButtonProps & HTMLAttributes<HTMLButtonElement>;
 
 export default function Button({ children, ...props }: ButtonProps) {
   const ref = useRef<HTMLButtonElement>(null);

@@ -1,13 +1,11 @@
-import { useRef } from "react";
+import { HTMLAttributes, useRef } from "react";
 import type { AriaTextFieldProps } from "react-aria";
 import { useTextField } from "react-aria";
 
-export type TextFieldProps = {
-  children?: React.ReactNode;
-  [key: string]: unknown;
-} & AriaTextFieldProps;
+export type TextFieldProps = AriaTextFieldProps & HTMLAttributes<HTMLInputElement>;
 
-export default function TextField({ label, description, ...props }: TextFieldProps) {
+export default function TextField(props: TextFieldProps) {
+  const { label, description } = props;
   const ref = useRef<HTMLInputElement>(null);
   const {
     labelProps,

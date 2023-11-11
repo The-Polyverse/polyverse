@@ -1,5 +1,4 @@
-import { AccessControlProvider } from "@pankod/refine";
-import { CanParams, CanReturnType } from "@pankod/refine/dist/interfaces";
+import { AccessControlProvider, CanParams, CanReturnType } from "@refinedev/core";
 
 export default function createAccessControlProvider(): AccessControlProvider {
   return {

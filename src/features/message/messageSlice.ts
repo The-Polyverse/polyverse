@@ -12,9 +12,11 @@ export default function createMessagesSlice(preloadedState = {}) {
       addMessage: messagesAdapter.addOne,
       updateMessage: messagesAdapter.updateOne,
       removeMessage: messagesAdapter.removeOne,
+      removeMessageNoSync: messagesAdapter.removeOne,
       addMessages: messagesAdapter.addMany,
       updateMessages: messagesAdapter.updateMany,
       removeMessages: messagesAdapter.removeMany,
+      upsertOne: messagesAdapter.upsertOne,
     },
   });
 }

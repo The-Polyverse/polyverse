@@ -3,7 +3,7 @@ import Message from "../models/message";
 import createMessagesSlice, {
   selectAllMessages,
   selectMessageById,
-  selectMessageEntities,
+  selectMessagesByIds,
 } from "../features/message/messageSlice";
 import {
   DataProvider,
@@ -91,11 +91,10 @@ export default function createDataProvider(store: Store): DataProvider {
       ids,
     }: DeleteManyParams<TVariables>): Promise<DeleteManyResponse<TData>> => {
       if (resource === "messages") {
-        const messages = selectMessageEntities(store.getState());
-        const deletedMessages = ids.map((id) => messages[id]) as unknown[];
+        const messages = selectMessagesByIds(store.getState(), ids as string[]) as unknown[];
 
         store.dispatch(actions.removeMessages(ids));
-        return { data: deletedMessages as TData[] };
+        return { data: messages as TData[] };
       }
       return { data: [] as TData[] };
     },
@@ -104,8 +103,7 @@ export default function createDataProvider(store: Store): DataProvider {
       ids,
     }: GetManyParams): Promise<GetListResponse<TData>> => {
       if (resource === "messages") {
-        const allMessages = selectMessageEntities(store.getState());
-        const messages = ids.map((id) => allMessages[id]) as unknown[];
+        const messages = selectMessagesByIds(store.getState(), ids as string[]) as unknown[];
         return { data: messages as TData[], total: messages.length };
       }
       return { data: [], total: 0 };
@@ -132,7 +130,8 @@ export default function createDataProvider(store: Store): DataProvider {
           return { id, changes: updateMessages[index] };
         }) as unknown[];
         store.dispatch(actions.updateMessages(messages as Update<Message>[]));
-        return { data: updateMessages as TData[] };
+        const updatedMessages = selectMessagesByIds(store.getState(), ids as string[]) as unknown[];
+        return { data: updatedMessages as TData[] };
       }
       return { data: [] as TData[] };
     },

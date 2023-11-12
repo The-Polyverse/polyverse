@@ -38,6 +38,7 @@ const RAW_RUNTIME_STATE =
           ["@storybook/react-vite", "virtual:2ecf2631eed8f9581b10bde35df160d8e7948b331b1670a44dbc7e85249a811665954336001d64d1d8756f7e69cc129bdae83d1beca10aa2069e2a3a552ee6d6#npm:7.5.3"],\
           ["@storybook/testing-library", "npm:0.2.2"],\
           ["@types/express", "npm:4.17.21"],\
+          ["@types/pouchdb", "npm:6.4.2"],\
           ["@types/react", "npm:18.2.37"],\
           ["@types/react-dom", "npm:18.2.15"],\
           ["@types/serve-static", "npm:1.15.5"],\
@@ -58,6 +59,8 @@ const RAW_RUNTIME_STATE =
           ["lightningcss", "npm:1.22.1"],\
           ["path", "npm:0.12.7"],\
           ["postcss", "npm:8.4.31"],\
+          ["pouchdb", "npm:8.0.1"],\
+          ["pouchdb-adapter-memory", "npm:8.0.1"],\
           ["react", "npm:18.2.0"],\
           ["react-aria", "virtual:2ecf2631eed8f9581b10bde35df160d8e7948b331b1670a44dbc7e85249a811665954336001d64d1d8756f7e69cc129bdae83d1beca10aa2069e2a3a552ee6d6#npm:3.30.0"],\
           ["react-dom", "virtual:2ecf2631eed8f9581b10bde35df160d8e7948b331b1670a44dbc7e85249a811665954336001d64d1d8756f7e69cc129bdae83d1beca10aa2069e2a3a552ee6d6#npm:18.2.0"],\
@@ -9023,6 +9026,203 @@ const RAW_RUNTIME_STATE =
         "linkType": "HARD"\
       }]\
     ]],\
+    ["@types/pouchdb", [\
+      ["npm:6.4.2", {\
+        "packageLocation": "../../home/codespace/.yarn/berry/cache/@types-pouchdb-npm-6.4.2-c255442488-10c0.zip/node_modules/@types/pouchdb/",\
+        "packageDependencies": [\
+          ["@types/pouchdb", "npm:6.4.2"],\
+          ["@types/pouchdb-adapter-cordova-sqlite", "npm:1.0.4"],\
+          ["@types/pouchdb-adapter-fruitdown", "npm:6.1.6"],\
+          ["@types/pouchdb-adapter-http", "npm:6.1.6"],\
+          ["@types/pouchdb-adapter-idb", "npm:6.1.7"],\
+          ["@types/pouchdb-adapter-leveldb", "npm:6.1.6"],\
+          ["@types/pouchdb-adapter-localstorage", "npm:6.1.6"],\
+          ["@types/pouchdb-adapter-memory", "npm:6.1.6"],\
+          ["@types/pouchdb-adapter-node-websql", "npm:6.1.5"],\
+          ["@types/pouchdb-adapter-websql", "npm:6.1.7"],\
+          ["@types/pouchdb-browser", "npm:6.1.5"],\
+          ["@types/pouchdb-core", "npm:7.0.14"],\
+          ["@types/pouchdb-http", "npm:6.1.5"],\
+          ["@types/pouchdb-mapreduce", "npm:6.1.10"],\
+          ["@types/pouchdb-node", "npm:6.1.7"],\
+          ["@types/pouchdb-replication", "npm:6.4.7"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["@types/pouchdb-adapter-cordova-sqlite", [\
+      ["npm:1.0.4", {\
+        "packageLocation": "../../home/codespace/.yarn/berry/cache/@types-pouchdb-adapter-cordova-sqlite-npm-1.0.4-5755eb7f97-10c0.zip/node_modules/@types/pouchdb-adapter-cordova-sqlite/",\
+        "packageDependencies": [\
+          ["@types/pouchdb-adapter-cordova-sqlite", "npm:1.0.4"],\
+          ["@types/pouchdb-core", "npm:7.0.14"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["@types/pouchdb-adapter-fruitdown", [\
+      ["npm:6.1.6", {\
+        "packageLocation": "../../home/codespace/.yarn/berry/cache/@types-pouchdb-adapter-fruitdown-npm-6.1.6-4d9834c228-10c0.zip/node_modules/@types/pouchdb-adapter-fruitdown/",\
+        "packageDependencies": [\
+          ["@types/pouchdb-adapter-fruitdown", "npm:6.1.6"],\
+          ["@types/pouchdb-core", "npm:7.0.14"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["@types/pouchdb-adapter-http", [\
+      ["npm:6.1.6", {\
+        "packageLocation": "../../home/codespace/.yarn/berry/cache/@types-pouchdb-adapter-http-npm-6.1.6-518bebedb1-10c0.zip/node_modules/@types/pouchdb-adapter-http/",\
+        "packageDependencies": [\
+          ["@types/pouchdb-adapter-http", "npm:6.1.6"],\
+          ["@types/pouchdb-core", "npm:7.0.14"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["@types/pouchdb-adapter-idb", [\
+      ["npm:6.1.7", {\
+        "packageLocation": "../../home/codespace/.yarn/berry/cache/@types-pouchdb-adapter-idb-npm-6.1.7-b807015ada-10c0.zip/node_modules/@types/pouchdb-adapter-idb/",\
+        "packageDependencies": [\
+          ["@types/pouchdb-adapter-idb", "npm:6.1.7"],\
+          ["@types/pouchdb-core", "npm:7.0.14"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["@types/pouchdb-adapter-leveldb", [\
+      ["npm:6.1.6", {\
+        "packageLocation": "../../home/codespace/.yarn/berry/cache/@types-pouchdb-adapter-leveldb-npm-6.1.6-275dd30f09-10c0.zip/node_modules/@types/pouchdb-adapter-leveldb/",\
+        "packageDependencies": [\
+          ["@types/pouchdb-adapter-leveldb", "npm:6.1.6"],\
+          ["@types/pouchdb-core", "npm:7.0.14"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["@types/pouchdb-adapter-localstorage", [\
+      ["npm:6.1.6", {\
+        "packageLocation": "../../home/codespace/.yarn/berry/cache/@types-pouchdb-adapter-localstorage-npm-6.1.6-1989de030a-10c0.zip/node_modules/@types/pouchdb-adapter-localstorage/",\
+        "packageDependencies": [\
+          ["@types/pouchdb-adapter-localstorage", "npm:6.1.6"],\
+          ["@types/pouchdb-core", "npm:7.0.14"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["@types/pouchdb-adapter-memory", [\
+      ["npm:6.1.6", {\
+        "packageLocation": "../../home/codespace/.yarn/berry/cache/@types-pouchdb-adapter-memory-npm-6.1.6-f394a6d88e-10c0.zip/node_modules/@types/pouchdb-adapter-memory/",\
+        "packageDependencies": [\
+          ["@types/pouchdb-adapter-memory", "npm:6.1.6"],\
+          ["@types/pouchdb-core", "npm:7.0.14"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["@types/pouchdb-adapter-node-websql", [\
+      ["npm:6.1.5", {\
+        "packageLocation": "../../home/codespace/.yarn/berry/cache/@types-pouchdb-adapter-node-websql-npm-6.1.5-8d8c1bd944-10c0.zip/node_modules/@types/pouchdb-adapter-node-websql/",\
+        "packageDependencies": [\
+          ["@types/pouchdb-adapter-node-websql", "npm:6.1.5"],\
+          ["@types/pouchdb-adapter-websql", "npm:6.1.7"],\
+          ["@types/pouchdb-core", "npm:7.0.14"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["@types/pouchdb-adapter-websql", [\
+      ["npm:6.1.7", {\
+        "packageLocation": "../../home/codespace/.yarn/berry/cache/@types-pouchdb-adapter-websql-npm-6.1.7-46f0f18ae0-10c0.zip/node_modules/@types/pouchdb-adapter-websql/",\
+        "packageDependencies": [\
+          ["@types/pouchdb-adapter-websql", "npm:6.1.7"],\
+          ["@types/pouchdb-core", "npm:7.0.14"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["@types/pouchdb-browser", [\
+      ["npm:6.1.5", {\
+        "packageLocation": "../../home/codespace/.yarn/berry/cache/@types-pouchdb-browser-npm-6.1.5-fe1cc96adb-10c0.zip/node_modules/@types/pouchdb-browser/",\
+        "packageDependencies": [\
+          ["@types/pouchdb-browser", "npm:6.1.5"],\
+          ["@types/pouchdb-adapter-http", "npm:6.1.6"],\
+          ["@types/pouchdb-adapter-idb", "npm:6.1.7"],\
+          ["@types/pouchdb-adapter-websql", "npm:6.1.7"],\
+          ["@types/pouchdb-core", "npm:7.0.14"],\
+          ["@types/pouchdb-mapreduce", "npm:6.1.10"],\
+          ["@types/pouchdb-replication", "npm:6.4.7"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["@types/pouchdb-core", [\
+      ["npm:7.0.14", {\
+        "packageLocation": "../../home/codespace/.yarn/berry/cache/@types-pouchdb-core-npm-7.0.14-bdbe5755fe-10c0.zip/node_modules/@types/pouchdb-core/",\
+        "packageDependencies": [\
+          ["@types/pouchdb-core", "npm:7.0.14"],\
+          ["@types/debug", "npm:4.1.12"],\
+          ["@types/pouchdb-find", "npm:7.3.3"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["@types/pouchdb-find", [\
+      ["npm:7.3.3", {\
+        "packageLocation": "../../home/codespace/.yarn/berry/cache/@types-pouchdb-find-npm-7.3.3-55961d55ff-10c0.zip/node_modules/@types/pouchdb-find/",\
+        "packageDependencies": [\
+          ["@types/pouchdb-find", "npm:7.3.3"],\
+          ["@types/pouchdb-core", "npm:7.0.14"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["@types/pouchdb-http", [\
+      ["npm:6.1.5", {\
+        "packageLocation": "../../home/codespace/.yarn/berry/cache/@types-pouchdb-http-npm-6.1.5-c6d97beb24-10c0.zip/node_modules/@types/pouchdb-http/",\
+        "packageDependencies": [\
+          ["@types/pouchdb-http", "npm:6.1.5"],\
+          ["@types/pouchdb-adapter-http", "npm:6.1.6"],\
+          ["@types/pouchdb-core", "npm:7.0.14"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["@types/pouchdb-mapreduce", [\
+      ["npm:6.1.10", {\
+        "packageLocation": "../../home/codespace/.yarn/berry/cache/@types-pouchdb-mapreduce-npm-6.1.10-7c977ae3e2-10c0.zip/node_modules/@types/pouchdb-mapreduce/",\
+        "packageDependencies": [\
+          ["@types/pouchdb-mapreduce", "npm:6.1.10"],\
+          ["@types/pouchdb-core", "npm:7.0.14"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["@types/pouchdb-node", [\
+      ["npm:6.1.7", {\
+        "packageLocation": "../../home/codespace/.yarn/berry/cache/@types-pouchdb-node-npm-6.1.7-a044181db3-10c0.zip/node_modules/@types/pouchdb-node/",\
+        "packageDependencies": [\
+          ["@types/pouchdb-node", "npm:6.1.7"],\
+          ["@types/pouchdb-adapter-http", "npm:6.1.6"],\
+          ["@types/pouchdb-adapter-leveldb", "npm:6.1.6"],\
+          ["@types/pouchdb-core", "npm:7.0.14"],\
+          ["@types/pouchdb-mapreduce", "npm:6.1.10"],\
+          ["@types/pouchdb-replication", "npm:6.4.7"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["@types/pouchdb-replication", [\
+      ["npm:6.4.7", {\
+        "packageLocation": "../../home/codespace/.yarn/berry/cache/@types-pouchdb-replication-npm-6.4.7-bdc251f788-10c0.zip/node_modules/@types/pouchdb-replication/",\
+        "packageDependencies": [\
+          ["@types/pouchdb-replication", "npm:6.4.7"],\
+          ["@types/pouchdb-core", "npm:7.0.14"],\
+          ["@types/pouchdb-find", "npm:7.3.3"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
     ["@types/pretty-hrtime", [\
       ["npm:1.0.3", {\
         "packageLocation": "../../home/codespace/.yarn/berry/cache/@types-pretty-hrtime-npm-1.0.3-e4a0b4bf05-10c0.zip/node_modules/@types/pretty-hrtime/",\
@@ -9665,6 +9865,50 @@ const RAW_RUNTIME_STATE =
         "packageLocation": "../../home/codespace/.yarn/berry/cache/abbrev-npm-2.0.0-0eb38a17e5-10c0.zip/node_modules/abbrev/",\
         "packageDependencies": [\
           ["abbrev", "npm:2.0.0"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["abort-controller", [\
+      ["npm:3.0.0", {\
+        "packageLocation": "../../home/codespace/.yarn/berry/cache/abort-controller-npm-3.0.0-2f3a9a2bcb-10c0.zip/node_modules/abort-controller/",\
+        "packageDependencies": [\
+          ["abort-controller", "npm:3.0.0"],\
+          ["event-target-shim", "npm:5.0.1"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["abstract-leveldown", [\
+      ["npm:2.7.2", {\
+        "packageLocation": "../../home/codespace/.yarn/berry/cache/abstract-leveldown-npm-2.7.2-c4d00351c1-10c0.zip/node_modules/abstract-leveldown/",\
+        "packageDependencies": [\
+          ["abstract-leveldown", "npm:2.7.2"],\
+          ["xtend", "npm:4.0.2"]\
+        ],\
+        "linkType": "HARD"\
+      }],\
+      ["npm:6.2.3", {\
+        "packageLocation": "../../home/codespace/.yarn/berry/cache/abstract-leveldown-npm-6.2.3-73e4ffefa5-10c0.zip/node_modules/abstract-leveldown/",\
+        "packageDependencies": [\
+          ["abstract-leveldown", "npm:6.2.3"],\
+          ["buffer", "npm:5.7.1"],\
+          ["immediate", "npm:3.3.0"],\
+          ["level-concat-iterator", "npm:2.0.1"],\
+          ["level-supports", "npm:1.0.1"],\
+          ["xtend", "npm:4.0.2"]\
+        ],\
+        "linkType": "HARD"\
+      }],\
+      ["npm:6.3.0", {\
+        "packageLocation": "../../home/codespace/.yarn/berry/cache/abstract-leveldown-npm-6.3.0-4f3be79649-10c0.zip/node_modules/abstract-leveldown/",\
+        "packageDependencies": [\
+          ["abstract-leveldown", "npm:6.3.0"],\
+          ["buffer", "npm:5.7.1"],\
+          ["immediate", "npm:3.3.0"],\
+          ["level-concat-iterator", "npm:2.0.1"],\
+          ["level-supports", "npm:1.0.1"],\
+          ["xtend", "npm:4.0.2"]\
         ],\
         "linkType": "HARD"\
       }]\
@@ -10627,6 +10871,15 @@ const RAW_RUNTIME_STATE =
         "linkType": "HARD"\
       }]\
     ]],\
+    ["clone-buffer", [\
+      ["npm:1.0.0", {\
+        "packageLocation": "../../home/codespace/.yarn/berry/cache/clone-buffer-npm-1.0.0-7a16490ce4-10c0.zip/node_modules/clone-buffer/",\
+        "packageDependencies": [\
+          ["clone-buffer", "npm:1.0.0"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
     ["clone-deep", [\
       ["npm:4.0.1", {\
         "packageLocation": "../../home/codespace/.yarn/berry/cache/clone-deep-npm-4.0.1-70adab92c8-10c0.zip/node_modules/clone-deep/",\
@@ -11038,6 +11291,17 @@ const RAW_RUNTIME_STATE =
         "linkType": "HARD"\
       }]\
     ]],\
+    ["deferred-leveldown", [\
+      ["npm:5.3.0", {\
+        "packageLocation": "../../home/codespace/.yarn/berry/cache/deferred-leveldown-npm-5.3.0-01247ab5af-10c0.zip/node_modules/deferred-leveldown/",\
+        "packageDependencies": [\
+          ["deferred-leveldown", "npm:5.3.0"],\
+          ["abstract-leveldown", "npm:6.2.3"],\
+          ["inherits", "npm:2.0.4"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
     ["define-data-property", [\
       ["npm:1.1.1", {\
         "packageLocation": "../../home/codespace/.yarn/berry/cache/define-data-property-npm-1.1.1-2b5156d112-10c0.zip/node_modules/define-data-property/",\
@@ -11264,6 +11528,15 @@ const RAW_RUNTIME_STATE =
         "linkType": "HARD"\
       }]\
     ]],\
+    ["double-ended-queue", [\
+      ["npm:2.1.0-0", {\
+        "packageLocation": "../../home/codespace/.yarn/berry/cache/double-ended-queue-npm-2.1.0-0-24dce6d2ad-10c0.zip/node_modules/double-ended-queue/",\
+        "packageDependencies": [\
+          ["double-ended-queue", "npm:2.1.0-0"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
     ["duplexify", [\
       ["npm:3.7.1", {\
         "packageLocation": "../../home/codespace/.yarn/berry/cache/duplexify-npm-3.7.1-8f4f1e821f-10c0.zip/node_modules/duplexify/",\
@@ -11349,12 +11622,35 @@ const RAW_RUNTIME_STATE =
         "linkType": "HARD"\
       }]\
     ]],\
+    ["encoding-down", [\
+      ["npm:6.3.0", {\
+        "packageLocation": "../../home/codespace/.yarn/berry/cache/encoding-down-npm-6.3.0-507c54a059-10c0.zip/node_modules/encoding-down/",\
+        "packageDependencies": [\
+          ["encoding-down", "npm:6.3.0"],\
+          ["abstract-leveldown", "npm:6.3.0"],\
+          ["inherits", "npm:2.0.4"],\
+          ["level-codec", "npm:9.0.2"],\
+          ["level-errors", "npm:2.0.1"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
     ["end-of-stream", [\
       ["npm:1.4.4", {\
         "packageLocation": "../../home/codespace/.yarn/berry/cache/end-of-stream-npm-1.4.4-497fc6dee1-10c0.zip/node_modules/end-of-stream/",\
         "packageDependencies": [\
           ["end-of-stream", "npm:1.4.4"],\
           ["once", "npm:1.4.0"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["end-stream", [\
+      ["npm:0.1.0", {\
+        "packageLocation": "../../home/codespace/.yarn/berry/cache/end-stream-npm-0.1.0-4ee996b3fd-10c0.zip/node_modules/end-stream/",\
+        "packageDependencies": [\
+          ["end-stream", "npm:0.1.0"],\
+          ["write-stream", "npm:0.4.3"]\
         ],\
         "linkType": "HARD"\
       }]\
@@ -11391,6 +11687,16 @@ const RAW_RUNTIME_STATE =
         "packageLocation": "../../home/codespace/.yarn/berry/cache/err-code-npm-2.0.3-082e0ff9a7-10c0.zip/node_modules/err-code/",\
         "packageDependencies": [\
           ["err-code", "npm:2.0.3"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["errno", [\
+      ["npm:0.1.8", {\
+        "packageLocation": "../../home/codespace/.yarn/berry/cache/errno-npm-0.1.8-10ebc185bf-10c0.zip/node_modules/errno/",\
+        "packageDependencies": [\
+          ["errno", "npm:0.1.8"],\
+          ["prr", "npm:1.0.1"]\
         ],\
         "linkType": "HARD"\
       }]\
@@ -11818,6 +12124,15 @@ const RAW_RUNTIME_STATE =
         "linkType": "HARD"\
       }]\
     ]],\
+    ["event-target-shim", [\
+      ["npm:5.0.1", {\
+        "packageLocation": "../../home/codespace/.yarn/berry/cache/event-target-shim-npm-5.0.1-cb48709025-10c0.zip/node_modules/event-target-shim/",\
+        "packageDependencies": [\
+          ["event-target-shim", "npm:5.0.1"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
     ["eventemitter3", [\
       ["npm:4.0.7", {\
         "packageLocation": "../../home/codespace/.yarn/berry/cache/eventemitter3-npm-4.0.7-7afcdd74ae-10c0.zip/node_modules/eventemitter3/",\
@@ -11992,6 +12307,16 @@ const RAW_RUNTIME_STATE =
         "packageDependencies": [\
           ["fd-slicer", "npm:1.1.0"],\
           ["pend", "npm:1.2.0"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["fetch-cookie", [\
+      ["npm:0.11.0", {\
+        "packageLocation": "../../home/codespace/.yarn/berry/cache/fetch-cookie-npm-0.11.0-c1249118a6-10c0.zip/node_modules/fetch-cookie/",\
+        "packageDependencies": [\
+          ["fetch-cookie", "npm:0.11.0"],\
+          ["tough-cookie", "npm:4.1.3"]\
         ],\
         "linkType": "HARD"\
       }]\
@@ -12305,6 +12630,15 @@ const RAW_RUNTIME_STATE =
         "packageLocation": "../../home/codespace/.yarn/berry/cache/function-bind-npm-1.1.2-7a55be9b03-10c0.zip/node_modules/function-bind/",\
         "packageDependencies": [\
           ["function-bind", "npm:1.1.2"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["functional-red-black-tree", [\
+      ["npm:1.0.1", {\
+        "packageLocation": "../../home/codespace/.yarn/berry/cache/functional-red-black-tree-npm-1.0.1-ccfe924dcd-10c0.zip/node_modules/functional-red-black-tree/",\
+        "packageDependencies": [\
+          ["functional-red-black-tree", "npm:1.0.1"]\
         ],\
         "linkType": "HARD"\
       }]\
@@ -12864,6 +13198,15 @@ const RAW_RUNTIME_STATE =
         "linkType": "HARD"\
       }]\
     ]],\
+    ["immediate", [\
+      ["npm:3.3.0", {\
+        "packageLocation": "../../home/codespace/.yarn/berry/cache/immediate-npm-3.3.0-d00fd9df7d-10c0.zip/node_modules/immediate/",\
+        "packageDependencies": [\
+          ["immediate", "npm:3.3.0"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
     ["immer", [\
       ["npm:9.0.21", {\
         "packageLocation": "../../home/codespace/.yarn/berry/cache/immer-npm-9.0.21-03c48c58ea-10c0.zip/node_modules/immer/",\
@@ -13367,6 +13710,13 @@ const RAW_RUNTIME_STATE =
       }]\
     ]],\
     ["isarray", [\
+      ["npm:0.0.1", {\
+        "packageLocation": "../../home/codespace/.yarn/berry/cache/isarray-npm-0.0.1-92e37e0a70-10c0.zip/node_modules/isarray/",\
+        "packageDependencies": [\
+          ["isarray", "npm:0.0.1"]\
+        ],\
+        "linkType": "HARD"\
+      }],\
       ["npm:1.0.0", {\
         "packageLocation": "../../home/codespace/.yarn/berry/cache/isarray-npm-1.0.0-db4f547720-10c0.zip/node_modules/isarray/",\
         "packageDependencies": [\
@@ -13738,6 +14088,130 @@ const RAW_RUNTIME_STATE =
         "linkType": "HARD"\
       }]\
     ]],\
+    ["level", [\
+      ["npm:6.0.1", {\
+        "packageLocation": "../../home/codespace/.yarn/berry/cache/level-npm-6.0.1-77d102912f-10c0.zip/node_modules/level/",\
+        "packageDependencies": [\
+          ["level", "npm:6.0.1"],\
+          ["level-js", "npm:5.0.2"],\
+          ["level-packager", "npm:5.1.1"],\
+          ["leveldown", "npm:5.6.0"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["level-codec", [\
+      ["npm:9.0.2", {\
+        "packageLocation": "../../home/codespace/.yarn/berry/cache/level-codec-npm-9.0.2-e778987eb6-10c0.zip/node_modules/level-codec/",\
+        "packageDependencies": [\
+          ["level-codec", "npm:9.0.2"],\
+          ["buffer", "npm:5.7.1"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["level-concat-iterator", [\
+      ["npm:2.0.1", {\
+        "packageLocation": "../../home/codespace/.yarn/berry/cache/level-concat-iterator-npm-2.0.1-5179af5bd2-10c0.zip/node_modules/level-concat-iterator/",\
+        "packageDependencies": [\
+          ["level-concat-iterator", "npm:2.0.1"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["level-errors", [\
+      ["npm:2.0.1", {\
+        "packageLocation": "../../home/codespace/.yarn/berry/cache/level-errors-npm-2.0.1-981e46a3dc-10c0.zip/node_modules/level-errors/",\
+        "packageDependencies": [\
+          ["level-errors", "npm:2.0.1"],\
+          ["errno", "npm:0.1.8"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["level-iterator-stream", [\
+      ["npm:4.0.2", {\
+        "packageLocation": "../../home/codespace/.yarn/berry/cache/level-iterator-stream-npm-4.0.2-27e0549122-10c0.zip/node_modules/level-iterator-stream/",\
+        "packageDependencies": [\
+          ["level-iterator-stream", "npm:4.0.2"],\
+          ["inherits", "npm:2.0.4"],\
+          ["readable-stream", "npm:3.6.2"],\
+          ["xtend", "npm:4.0.2"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["level-js", [\
+      ["npm:5.0.2", {\
+        "packageLocation": "../../home/codespace/.yarn/berry/cache/level-js-npm-5.0.2-714af6b082-10c0.zip/node_modules/level-js/",\
+        "packageDependencies": [\
+          ["level-js", "npm:5.0.2"],\
+          ["abstract-leveldown", "npm:6.2.3"],\
+          ["buffer", "npm:5.7.1"],\
+          ["inherits", "npm:2.0.4"],\
+          ["ltgt", "npm:2.2.1"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["level-packager", [\
+      ["npm:5.1.1", {\
+        "packageLocation": "../../home/codespace/.yarn/berry/cache/level-packager-npm-5.1.1-94af8082f4-10c0.zip/node_modules/level-packager/",\
+        "packageDependencies": [\
+          ["level-packager", "npm:5.1.1"],\
+          ["encoding-down", "npm:6.3.0"],\
+          ["levelup", "npm:4.4.0"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["level-supports", [\
+      ["npm:1.0.1", {\
+        "packageLocation": "../../home/codespace/.yarn/berry/cache/level-supports-npm-1.0.1-e9d5ae27f4-10c0.zip/node_modules/level-supports/",\
+        "packageDependencies": [\
+          ["level-supports", "npm:1.0.1"],\
+          ["xtend", "npm:4.0.2"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["level-write-stream", [\
+      ["npm:1.0.0", {\
+        "packageLocation": "../../home/codespace/.yarn/berry/cache/level-write-stream-npm-1.0.0-0c040ef076-10c0.zip/node_modules/level-write-stream/",\
+        "packageDependencies": [\
+          ["level-write-stream", "npm:1.0.0"],\
+          ["end-stream", "npm:0.1.0"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["leveldown", [\
+      ["npm:5.6.0", {\
+        "packageLocation": "./.yarn/unplugged/leveldown-npm-5.6.0-be041a3cda/node_modules/leveldown/",\
+        "packageDependencies": [\
+          ["leveldown", "npm:5.6.0"],\
+          ["abstract-leveldown", "npm:6.2.3"],\
+          ["napi-macros", "npm:2.0.0"],\
+          ["node-gyp", "npm:10.0.1"],\
+          ["node-gyp-build", "npm:4.1.1"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["levelup", [\
+      ["npm:4.4.0", {\
+        "packageLocation": "../../home/codespace/.yarn/berry/cache/levelup-npm-4.4.0-3053c0e5bc-10c0.zip/node_modules/levelup/",\
+        "packageDependencies": [\
+          ["levelup", "npm:4.4.0"],\
+          ["deferred-leveldown", "npm:5.3.0"],\
+          ["level-errors", "npm:2.0.1"],\
+          ["level-iterator-stream", "npm:4.0.2"],\
+          ["level-supports", "npm:1.0.1"],\
+          ["xtend", "npm:4.0.2"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
     ["leven", [\
       ["npm:3.1.0", {\
         "packageLocation": "../../home/codespace/.yarn/berry/cache/leven-npm-3.1.0-b7697736a3-10c0.zip/node_modules/leven/",\
@@ -14010,6 +14484,15 @@ const RAW_RUNTIME_STATE =
         "packageDependencies": [\
           ["lru-cache", "npm:6.0.0"],\
           ["yallist", "npm:4.0.0"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["ltgt", [\
+      ["npm:2.2.1", {\
+        "packageLocation": "../../home/codespace/.yarn/berry/cache/ltgt-npm-2.2.1-443b5da86d-10c0.zip/node_modules/ltgt/",\
+        "packageDependencies": [\
+          ["ltgt", "npm:2.2.1"]\
         ],\
         "linkType": "HARD"\
       }]\
@@ -14300,6 +14783,21 @@ const RAW_RUNTIME_STATE =
         "packageLocation": "../../home/codespace/.yarn/berry/cache/media-typer-npm-0.3.0-8674f8f0f5-10c0.zip/node_modules/media-typer/",\
         "packageDependencies": [\
           ["media-typer", "npm:0.3.0"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["memdown", [\
+      ["npm:1.4.1", {\
+        "packageLocation": "../../home/codespace/.yarn/berry/cache/memdown-npm-1.4.1-6e0a6c3d53-10c0.zip/node_modules/memdown/",\
+        "packageDependencies": [\
+          ["memdown", "npm:1.4.1"],\
+          ["abstract-leveldown", "npm:2.7.2"],\
+          ["functional-red-black-tree", "npm:1.0.1"],\
+          ["immediate", "npm:3.3.0"],\
+          ["inherits", "npm:2.0.4"],\
+          ["ltgt", "npm:2.2.1"],\
+          ["safe-buffer", "npm:5.1.2"]\
         ],\
         "linkType": "HARD"\
       }]\
@@ -14999,6 +15497,15 @@ const RAW_RUNTIME_STATE =
         "linkType": "HARD"\
       }]\
     ]],\
+    ["napi-macros", [\
+      ["npm:2.0.0", {\
+        "packageLocation": "./.yarn/unplugged/napi-macros-npm-2.0.0-f996ef3cad/node_modules/napi-macros/",\
+        "packageDependencies": [\
+          ["napi-macros", "npm:2.0.0"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
     ["natural-compare", [\
       ["npm:1.4.0", {\
         "packageLocation": "../../home/codespace/.yarn/berry/cache/natural-compare-npm-1.4.0-97b75b362d-10c0.zip/node_modules/natural-compare/",\
@@ -15037,6 +15544,13 @@ const RAW_RUNTIME_STATE =
       }]\
     ]],\
     ["node-fetch", [\
+      ["npm:2.6.7", {\
+        "packageLocation": "../../home/codespace/.yarn/berry/cache/node-fetch-npm-2.6.7-777aa2a6df-10c0.zip/node_modules/node-fetch/",\
+        "packageDependencies": [\
+          ["node-fetch", "npm:2.6.7"]\
+        ],\
+        "linkType": "SOFT"\
+      }],\
       ["npm:2.7.0", {\
         "packageLocation": "../../home/codespace/.yarn/berry/cache/node-fetch-npm-2.7.0-587d57004e-10c0.zip/node_modules/node-fetch/",\
         "packageDependencies": [\
@@ -15048,6 +15562,20 @@ const RAW_RUNTIME_STATE =
         "packageLocation": "./.yarn/__virtual__/node-fetch-virtual-a4c9a19261/3/home/codespace/.yarn/berry/cache/node-fetch-npm-2.7.0-587d57004e-10c0.zip/node_modules/node-fetch/",\
         "packageDependencies": [\
           ["node-fetch", "virtual:017b14e33dc24496ace239ade2b5640ed536b1269040d3967889e91041f773a863c46aedbc2262a41a584ccc9a00fc7c284e30859c940aa03a3ba62080987605#npm:2.7.0"],\
+          ["@types/encoding", null],\
+          ["encoding", null],\
+          ["whatwg-url", "npm:5.0.0"]\
+        ],\
+        "packagePeers": [\
+          "@types/encoding",\
+          "encoding"\
+        ],\
+        "linkType": "HARD"\
+      }],\
+      ["virtual:7ecb76d929be7c223947d25a77a481cfca4a8bfbbfabc3afea82b4d811569c750a1dfb9a647e134c3f49d97a4b8ea076b0f1bcda4d8c85f2e063881cdf54f376#npm:2.6.7", {\
+        "packageLocation": "./.yarn/__virtual__/node-fetch-virtual-3db49f7227/3/home/codespace/.yarn/berry/cache/node-fetch-npm-2.6.7-777aa2a6df-10c0.zip/node_modules/node-fetch/",\
+        "packageDependencies": [\
+          ["node-fetch", "virtual:7ecb76d929be7c223947d25a77a481cfca4a8bfbbfabc3afea82b4d811569c750a1dfb9a647e134c3f49d97a4b8ea076b0f1bcda4d8c85f2e063881cdf54f376#npm:2.6.7"],\
           ["@types/encoding", null],\
           ["encoding", null],\
           ["whatwg-url", "npm:5.0.0"]\
@@ -15083,6 +15611,15 @@ const RAW_RUNTIME_STATE =
           ["semver", "npm:7.5.4"],\
           ["tar", "npm:6.2.0"],\
           ["which", "npm:4.0.0"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["node-gyp-build", [\
+      ["npm:4.1.1", {\
+        "packageLocation": "../../home/codespace/.yarn/berry/cache/node-gyp-build-npm-4.1.1-4743409fa0-10c0.zip/node_modules/node-gyp-build/",\
+        "packageDependencies": [\
+          ["node-gyp-build", "npm:4.1.1"]\
         ],\
         "linkType": "HARD"\
       }]\
@@ -15669,6 +16206,7 @@ const RAW_RUNTIME_STATE =
           ["@storybook/react-vite", "virtual:2ecf2631eed8f9581b10bde35df160d8e7948b331b1670a44dbc7e85249a811665954336001d64d1d8756f7e69cc129bdae83d1beca10aa2069e2a3a552ee6d6#npm:7.5.3"],\
           ["@storybook/testing-library", "npm:0.2.2"],\
           ["@types/express", "npm:4.17.21"],\
+          ["@types/pouchdb", "npm:6.4.2"],\
           ["@types/react", "npm:18.2.37"],\
           ["@types/react-dom", "npm:18.2.15"],\
           ["@types/serve-static", "npm:1.15.5"],\
@@ -15689,6 +16227,8 @@ const RAW_RUNTIME_STATE =
           ["lightningcss", "npm:1.22.1"],\
           ["path", "npm:0.12.7"],\
           ["postcss", "npm:8.4.31"],\
+          ["pouchdb", "npm:8.0.1"],\
+          ["pouchdb-adapter-memory", "npm:8.0.1"],\
           ["react", "npm:18.2.0"],\
           ["react-aria", "virtual:2ecf2631eed8f9581b10bde35df160d8e7948b331b1670a44dbc7e85249a811665954336001d64d1d8756f7e69cc129bdae83d1beca10aa2069e2a3a552ee6d6#npm:3.30.0"],\
           ["react-dom", "virtual:2ecf2631eed8f9581b10bde35df160d8e7948b331b1670a44dbc7e85249a811665954336001d64d1d8756f7e69cc129bdae83d1beca10aa2069e2a3a552ee6d6#npm:18.2.0"],\
@@ -15847,6 +16387,217 @@ const RAW_RUNTIME_STATE =
         "linkType": "HARD"\
       }]\
     ]],\
+    ["pouchdb", [\
+      ["npm:8.0.1", {\
+        "packageLocation": "../../home/codespace/.yarn/berry/cache/pouchdb-npm-8.0.1-8dceb77a74-10c0.zip/node_modules/pouchdb/",\
+        "packageDependencies": [\
+          ["pouchdb", "npm:8.0.1"],\
+          ["abort-controller", "npm:3.0.0"],\
+          ["buffer-from", "npm:1.1.2"],\
+          ["clone-buffer", "npm:1.0.0"],\
+          ["double-ended-queue", "npm:2.1.0-0"],\
+          ["fetch-cookie", "npm:0.11.0"],\
+          ["immediate", "npm:3.3.0"],\
+          ["level", "npm:6.0.1"],\
+          ["level-codec", "npm:9.0.2"],\
+          ["level-write-stream", "npm:1.0.0"],\
+          ["leveldown", "npm:5.6.0"],\
+          ["levelup", "npm:4.4.0"],\
+          ["ltgt", "npm:2.2.1"],\
+          ["node-fetch", "virtual:7ecb76d929be7c223947d25a77a481cfca4a8bfbbfabc3afea82b4d811569c750a1dfb9a647e134c3f49d97a4b8ea076b0f1bcda4d8c85f2e063881cdf54f376#npm:2.6.7"],\
+          ["readable-stream", "npm:1.1.14"],\
+          ["spark-md5", "npm:3.0.2"],\
+          ["through2", "npm:3.0.2"],\
+          ["uuid", "npm:8.3.2"],\
+          ["vuvuzela", "npm:1.0.3"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["pouchdb-adapter-leveldb-core", [\
+      ["npm:8.0.1", {\
+        "packageLocation": "../../home/codespace/.yarn/berry/cache/pouchdb-adapter-leveldb-core-npm-8.0.1-75335a81dc-10c0.zip/node_modules/pouchdb-adapter-leveldb-core/",\
+        "packageDependencies": [\
+          ["pouchdb-adapter-leveldb-core", "npm:8.0.1"],\
+          ["buffer-from", "npm:1.1.2"],\
+          ["double-ended-queue", "npm:2.1.0-0"],\
+          ["levelup", "npm:4.4.0"],\
+          ["pouchdb-adapter-utils", "npm:8.0.1"],\
+          ["pouchdb-binary-utils", "npm:8.0.1"],\
+          ["pouchdb-collections", "npm:8.0.1"],\
+          ["pouchdb-core", "npm:8.0.1"],\
+          ["pouchdb-errors", "npm:8.0.1"],\
+          ["pouchdb-json", "npm:8.0.1"],\
+          ["pouchdb-md5", "npm:8.0.1"],\
+          ["pouchdb-merge", "npm:8.0.1"],\
+          ["pouchdb-utils", "npm:8.0.1"],\
+          ["sublevel-pouchdb", "npm:8.0.1"],\
+          ["through2", "npm:3.0.2"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["pouchdb-adapter-memory", [\
+      ["npm:8.0.1", {\
+        "packageLocation": "../../home/codespace/.yarn/berry/cache/pouchdb-adapter-memory-npm-8.0.1-4c9eae9837-10c0.zip/node_modules/pouchdb-adapter-memory/",\
+        "packageDependencies": [\
+          ["pouchdb-adapter-memory", "npm:8.0.1"],\
+          ["memdown", "npm:1.4.1"],\
+          ["pouchdb-adapter-leveldb-core", "npm:8.0.1"],\
+          ["pouchdb-utils", "npm:8.0.1"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["pouchdb-adapter-utils", [\
+      ["npm:8.0.1", {\
+        "packageLocation": "../../home/codespace/.yarn/berry/cache/pouchdb-adapter-utils-npm-8.0.1-ec2c424427-10c0.zip/node_modules/pouchdb-adapter-utils/",\
+        "packageDependencies": [\
+          ["pouchdb-adapter-utils", "npm:8.0.1"],\
+          ["pouchdb-binary-utils", "npm:8.0.1"],\
+          ["pouchdb-collections", "npm:8.0.1"],\
+          ["pouchdb-errors", "npm:8.0.1"],\
+          ["pouchdb-md5", "npm:8.0.1"],\
+          ["pouchdb-merge", "npm:8.0.1"],\
+          ["pouchdb-utils", "npm:8.0.1"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["pouchdb-binary-utils", [\
+      ["npm:8.0.1", {\
+        "packageLocation": "../../home/codespace/.yarn/berry/cache/pouchdb-binary-utils-npm-8.0.1-88d2ad3c0d-10c0.zip/node_modules/pouchdb-binary-utils/",\
+        "packageDependencies": [\
+          ["pouchdb-binary-utils", "npm:8.0.1"],\
+          ["buffer-from", "npm:1.1.2"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["pouchdb-changes-filter", [\
+      ["npm:8.0.1", {\
+        "packageLocation": "../../home/codespace/.yarn/berry/cache/pouchdb-changes-filter-npm-8.0.1-cb6acafab1-10c0.zip/node_modules/pouchdb-changes-filter/",\
+        "packageDependencies": [\
+          ["pouchdb-changes-filter", "npm:8.0.1"],\
+          ["pouchdb-errors", "npm:8.0.1"],\
+          ["pouchdb-selector-core", "npm:8.0.1"],\
+          ["pouchdb-utils", "npm:8.0.1"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["pouchdb-collate", [\
+      ["npm:8.0.1", {\
+        "packageLocation": "../../home/codespace/.yarn/berry/cache/pouchdb-collate-npm-8.0.1-38e0457968-10c0.zip/node_modules/pouchdb-collate/",\
+        "packageDependencies": [\
+          ["pouchdb-collate", "npm:8.0.1"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["pouchdb-collections", [\
+      ["npm:8.0.1", {\
+        "packageLocation": "../../home/codespace/.yarn/berry/cache/pouchdb-collections-npm-8.0.1-8d400b5c80-10c0.zip/node_modules/pouchdb-collections/",\
+        "packageDependencies": [\
+          ["pouchdb-collections", "npm:8.0.1"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["pouchdb-core", [\
+      ["npm:8.0.1", {\
+        "packageLocation": "../../home/codespace/.yarn/berry/cache/pouchdb-core-npm-8.0.1-a9a326a9cf-10c0.zip/node_modules/pouchdb-core/",\
+        "packageDependencies": [\
+          ["pouchdb-core", "npm:8.0.1"],\
+          ["pouchdb-changes-filter", "npm:8.0.1"],\
+          ["pouchdb-collections", "npm:8.0.1"],\
+          ["pouchdb-errors", "npm:8.0.1"],\
+          ["pouchdb-fetch", "npm:8.0.1"],\
+          ["pouchdb-merge", "npm:8.0.1"],\
+          ["pouchdb-utils", "npm:8.0.1"],\
+          ["uuid", "npm:8.3.2"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["pouchdb-errors", [\
+      ["npm:8.0.1", {\
+        "packageLocation": "../../home/codespace/.yarn/berry/cache/pouchdb-errors-npm-8.0.1-f060c9ac8d-10c0.zip/node_modules/pouchdb-errors/",\
+        "packageDependencies": [\
+          ["pouchdb-errors", "npm:8.0.1"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["pouchdb-fetch", [\
+      ["npm:8.0.1", {\
+        "packageLocation": "../../home/codespace/.yarn/berry/cache/pouchdb-fetch-npm-8.0.1-7ecb76d929-10c0.zip/node_modules/pouchdb-fetch/",\
+        "packageDependencies": [\
+          ["pouchdb-fetch", "npm:8.0.1"],\
+          ["abort-controller", "npm:3.0.0"],\
+          ["fetch-cookie", "npm:0.11.0"],\
+          ["node-fetch", "virtual:7ecb76d929be7c223947d25a77a481cfca4a8bfbbfabc3afea82b4d811569c750a1dfb9a647e134c3f49d97a4b8ea076b0f1bcda4d8c85f2e063881cdf54f376#npm:2.6.7"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["pouchdb-json", [\
+      ["npm:8.0.1", {\
+        "packageLocation": "../../home/codespace/.yarn/berry/cache/pouchdb-json-npm-8.0.1-fa1f39b2d7-10c0.zip/node_modules/pouchdb-json/",\
+        "packageDependencies": [\
+          ["pouchdb-json", "npm:8.0.1"],\
+          ["vuvuzela", "npm:1.0.3"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["pouchdb-md5", [\
+      ["npm:8.0.1", {\
+        "packageLocation": "../../home/codespace/.yarn/berry/cache/pouchdb-md5-npm-8.0.1-771cf19d27-10c0.zip/node_modules/pouchdb-md5/",\
+        "packageDependencies": [\
+          ["pouchdb-md5", "npm:8.0.1"],\
+          ["pouchdb-binary-utils", "npm:8.0.1"],\
+          ["spark-md5", "npm:3.0.2"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["pouchdb-merge", [\
+      ["npm:8.0.1", {\
+        "packageLocation": "../../home/codespace/.yarn/berry/cache/pouchdb-merge-npm-8.0.1-474c7807d6-10c0.zip/node_modules/pouchdb-merge/",\
+        "packageDependencies": [\
+          ["pouchdb-merge", "npm:8.0.1"],\
+          ["pouchdb-utils", "npm:8.0.1"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["pouchdb-selector-core", [\
+      ["npm:8.0.1", {\
+        "packageLocation": "../../home/codespace/.yarn/berry/cache/pouchdb-selector-core-npm-8.0.1-e6ae869245-10c0.zip/node_modules/pouchdb-selector-core/",\
+        "packageDependencies": [\
+          ["pouchdb-selector-core", "npm:8.0.1"],\
+          ["pouchdb-collate", "npm:8.0.1"],\
+          ["pouchdb-utils", "npm:8.0.1"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["pouchdb-utils", [\
+      ["npm:8.0.1", {\
+        "packageLocation": "../../home/codespace/.yarn/berry/cache/pouchdb-utils-npm-8.0.1-c4d8d9e39d-10c0.zip/node_modules/pouchdb-utils/",\
+        "packageDependencies": [\
+          ["pouchdb-utils", "npm:8.0.1"],\
+          ["clone-buffer", "npm:1.0.0"],\
+          ["immediate", "npm:3.3.0"],\
+          ["pouchdb-collections", "npm:8.0.1"],\
+          ["pouchdb-errors", "npm:8.0.1"],\
+          ["pouchdb-md5", "npm:8.0.1"],\
+          ["uuid", "npm:8.3.2"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
     ["prelude-ls", [\
       ["npm:1.2.1", {\
         "packageLocation": "../../home/codespace/.yarn/berry/cache/prelude-ls-npm-1.2.1-3e4d272a55-10c0.zip/node_modules/prelude-ls/",\
@@ -15986,6 +16737,24 @@ const RAW_RUNTIME_STATE =
         "linkType": "HARD"\
       }]\
     ]],\
+    ["prr", [\
+      ["npm:1.0.1", {\
+        "packageLocation": "../../home/codespace/.yarn/berry/cache/prr-npm-1.0.1-608d442761-10c0.zip/node_modules/prr/",\
+        "packageDependencies": [\
+          ["prr", "npm:1.0.1"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["psl", [\
+      ["npm:1.9.0", {\
+        "packageLocation": "../../home/codespace/.yarn/berry/cache/psl-npm-1.9.0-a546edad1a-10c0.zip/node_modules/psl/",\
+        "packageDependencies": [\
+          ["psl", "npm:1.9.0"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
     ["pump", [\
       ["npm:2.0.1", {\
         "packageLocation": "../../home/codespace/.yarn/berry/cache/pump-npm-2.0.1-05afac7fc4-10c0.zip/node_modules/pump/",\
@@ -16067,6 +16836,15 @@ const RAW_RUNTIME_STATE =
         "packageDependencies": [\
           ["qs", "npm:6.11.2"],\
           ["side-channel", "npm:1.0.4"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["querystringify", [\
+      ["npm:2.2.0", {\
+        "packageLocation": "../../home/codespace/.yarn/berry/cache/querystringify-npm-2.2.0-4e77c9f606-10c0.zip/node_modules/querystringify/",\
+        "packageDependencies": [\
+          ["querystringify", "npm:2.2.0"]\
         ],\
         "linkType": "HARD"\
       }]\
@@ -16539,6 +17317,24 @@ const RAW_RUNTIME_STATE =
       }]\
     ]],\
     ["readable-stream", [\
+      ["npm:0.0.4", {\
+        "packageLocation": "../../home/codespace/.yarn/berry/cache/readable-stream-npm-0.0.4-5d4865210d-10c0.zip/node_modules/readable-stream/",\
+        "packageDependencies": [\
+          ["readable-stream", "npm:0.0.4"]\
+        ],\
+        "linkType": "HARD"\
+      }],\
+      ["npm:1.1.14", {\
+        "packageLocation": "../../home/codespace/.yarn/berry/cache/readable-stream-npm-1.1.14-41e61d1768-10c0.zip/node_modules/readable-stream/",\
+        "packageDependencies": [\
+          ["readable-stream", "npm:1.1.14"],\
+          ["core-util-is", "npm:1.0.3"],\
+          ["inherits", "npm:2.0.4"],\
+          ["isarray", "npm:0.0.1"],\
+          ["string_decoder", "npm:0.10.31"]\
+        ],\
+        "linkType": "HARD"\
+      }],\
       ["npm:2.3.8", {\
         "packageLocation": "../../home/codespace/.yarn/berry/cache/readable-stream-npm-2.3.8-67a94c2cb1-10c0.zip/node_modules/readable-stream/",\
         "packageDependencies": [\
@@ -17218,6 +18014,15 @@ const RAW_RUNTIME_STATE =
         "linkType": "HARD"\
       }]\
     ]],\
+    ["spark-md5", [\
+      ["npm:3.0.2", {\
+        "packageLocation": "../../home/codespace/.yarn/berry/cache/spark-md5-npm-3.0.2-1983a5b179-10c0.zip/node_modules/spark-md5/",\
+        "packageDependencies": [\
+          ["spark-md5", "npm:3.0.2"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
     ["spdx-correct", [\
       ["npm:3.2.0", {\
         "packageLocation": "../../home/codespace/.yarn/berry/cache/spdx-correct-npm-3.2.0-ffae008484-10c0.zip/node_modules/spdx-correct/",\
@@ -17374,6 +18179,13 @@ const RAW_RUNTIME_STATE =
       }]\
     ]],\
     ["string_decoder", [\
+      ["npm:0.10.31", {\
+        "packageLocation": "../../home/codespace/.yarn/berry/cache/string_decoder-npm-0.10.31-851f3f7302-10c0.zip/node_modules/string_decoder/",\
+        "packageDependencies": [\
+          ["string_decoder", "npm:0.10.31"]\
+        ],\
+        "linkType": "HARD"\
+      }],\
       ["npm:1.1.1", {\
         "packageLocation": "../../home/codespace/.yarn/berry/cache/string_decoder-npm-1.1.1-e46a6c1353-10c0.zip/node_modules/string_decoder/",\
         "packageDependencies": [\
@@ -17443,6 +18255,18 @@ const RAW_RUNTIME_STATE =
         "packageDependencies": [\
           ["strip-literal", "npm:1.3.0"],\
           ["acorn", "npm:8.11.2"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["sublevel-pouchdb", [\
+      ["npm:8.0.1", {\
+        "packageLocation": "../../home/codespace/.yarn/berry/cache/sublevel-pouchdb-npm-8.0.1-23b970d438-10c0.zip/node_modules/sublevel-pouchdb/",\
+        "packageDependencies": [\
+          ["sublevel-pouchdb", "npm:8.0.1"],\
+          ["level-codec", "npm:9.0.2"],\
+          ["ltgt", "npm:2.2.1"],\
+          ["readable-stream", "npm:1.1.14"]\
         ],\
         "linkType": "HARD"\
       }]\
@@ -17673,6 +18497,15 @@ const RAW_RUNTIME_STATE =
           ["xtend", "npm:4.0.2"]\
         ],\
         "linkType": "HARD"\
+      }],\
+      ["npm:3.0.2", {\
+        "packageLocation": "../../home/codespace/.yarn/berry/cache/through2-npm-3.0.2-403f837012-10c0.zip/node_modules/through2/",\
+        "packageDependencies": [\
+          ["through2", "npm:3.0.2"],\
+          ["inherits", "npm:2.0.4"],\
+          ["readable-stream", "npm:3.6.2"]\
+        ],\
+        "linkType": "HARD"\
       }]\
     ]],\
     ["tiny-invariant", [\
@@ -17762,6 +18595,19 @@ const RAW_RUNTIME_STATE =
         "packageLocation": "../../home/codespace/.yarn/berry/cache/totalist-npm-3.0.1-91e71f3baa-10c0.zip/node_modules/totalist/",\
         "packageDependencies": [\
           ["totalist", "npm:3.0.1"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["tough-cookie", [\
+      ["npm:4.1.3", {\
+        "packageLocation": "../../home/codespace/.yarn/berry/cache/tough-cookie-npm-4.1.3-08285e2518-10c0.zip/node_modules/tough-cookie/",\
+        "packageDependencies": [\
+          ["tough-cookie", "npm:4.1.3"],\
+          ["psl", "npm:1.9.0"],\
+          ["punycode", "npm:2.3.1"],\
+          ["universalify", "npm:0.2.0"],\
+          ["url-parse", "npm:1.5.10"]\
         ],\
         "linkType": "HARD"\
       }]\
@@ -18161,6 +19007,13 @@ const RAW_RUNTIME_STATE =
       }]\
     ]],\
     ["universalify", [\
+      ["npm:0.2.0", {\
+        "packageLocation": "../../home/codespace/.yarn/berry/cache/universalify-npm-0.2.0-9984e61c10-10c0.zip/node_modules/universalify/",\
+        "packageDependencies": [\
+          ["universalify", "npm:0.2.0"]\
+        ],\
+        "linkType": "HARD"\
+      }],\
       ["npm:2.0.1", {\
         "packageLocation": "../../home/codespace/.yarn/berry/cache/universalify-npm-2.0.1-040ba5a21e-10c0.zip/node_modules/universalify/",\
         "packageDependencies": [\
@@ -18250,6 +19103,17 @@ const RAW_RUNTIME_STATE =
         "packageLocation": "../../home/codespace/.yarn/berry/cache/url-join-npm-4.0.1-e1f4415722-10c0.zip/node_modules/url-join/",\
         "packageDependencies": [\
           ["url-join", "npm:4.0.1"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["url-parse", [\
+      ["npm:1.5.10", {\
+        "packageLocation": "../../home/codespace/.yarn/berry/cache/url-parse-npm-1.5.10-64fa2bcd6d-10c0.zip/node_modules/url-parse/",\
+        "packageDependencies": [\
+          ["url-parse", "npm:1.5.10"],\
+          ["querystringify", "npm:2.2.0"],\
+          ["requires-port", "npm:1.0.0"]\
         ],\
         "linkType": "HARD"\
       }]\
@@ -18391,6 +19255,13 @@ const RAW_RUNTIME_STATE =
       }]\
     ]],\
     ["uuid", [\
+      ["npm:8.3.2", {\
+        "packageLocation": "../../home/codespace/.yarn/berry/cache/uuid-npm-8.3.2-eca0baba53-10c0.zip/node_modules/uuid/",\
+        "packageDependencies": [\
+          ["uuid", "npm:8.3.2"]\
+        ],\
+        "linkType": "HARD"\
+      }],\
       ["npm:9.0.1", {\
         "packageLocation": "../../home/codespace/.yarn/berry/cache/uuid-npm-9.0.1-39a8442bc6-10c0.zip/node_modules/uuid/",\
         "packageDependencies": [\
@@ -18678,6 +19549,15 @@ const RAW_RUNTIME_STATE =
         "linkType": "HARD"\
       }]\
     ]],\
+    ["vuvuzela", [\
+      ["npm:1.0.3", {\
+        "packageLocation": "../../home/codespace/.yarn/berry/cache/vuvuzela-npm-1.0.3-bbf5b53d77-10c0.zip/node_modules/vuvuzela/",\
+        "packageDependencies": [\
+          ["vuvuzela", "npm:1.0.3"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
     ["walker", [\
       ["npm:1.0.8", {\
         "packageLocation": "../../home/codespace/.yarn/berry/cache/walker-npm-1.0.8-b0a05b9478-10c0.zip/node_modules/walker/",\
@@ -18909,6 +19789,16 @@ const RAW_RUNTIME_STATE =
           ["write-file-atomic", "npm:4.0.2"],\
           ["imurmurhash", "npm:0.1.4"],\
           ["signal-exit", "npm:3.0.7"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["write-stream", [\
+      ["npm:0.4.3", {\
+        "packageLocation": "../../home/codespace/.yarn/berry/cache/write-stream-npm-0.4.3-d522c0a8e7-10c0.zip/node_modules/write-stream/",\
+        "packageDependencies": [\
+          ["write-stream", "npm:0.4.3"],\
+          ["readable-stream", "npm:0.0.4"]\
         ],\
         "linkType": "HARD"\
       }]\

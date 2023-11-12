@@ -33,3 +33,7 @@ export const {
   selectAll: selectAllMessages,
   selectTotal: selectTotalMessages,
 } = messagesAdapter.getSelectors((state: { messages: MessageEntity }) => state.messages);
+
+export function selectMessagesByIds(state: { messages: MessageEntity }, ids: string[]): Message[] {
+  return ids.map(id => selectMessageById(state, id)).filter(message => message !== undefined) as Message[];
+}

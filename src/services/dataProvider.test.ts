@@ -134,7 +134,7 @@ describe('dataProvider', () => {
   });
 
   it('updates many messages correctly', async () => {
-    const result = dataProvider.updateMany ? await dataProvider.updateMany({ resource: 'messages', ids: ['1', '2'], variables: [{ id: '1', content: 'Hello World 4' }, { id: '2', content: 'Hello World 5' }] }) : null;
+    const result = dataProvider.updateMany ? await dataProvider.updateMany({ resource: 'messages', ids: ['1', '2'], variables: [{ content: 'Hello World 4' }, { content: 'Hello World 5' }] }) : null;
     expect(result && result.data).toBeDefined();
 
     expect(result && result.data.length).toEqual(2);

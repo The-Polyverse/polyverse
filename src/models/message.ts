@@ -1,5 +1,6 @@
 type Message = {
     id: string;
+    rev?: string;
     content: string;
 }
 

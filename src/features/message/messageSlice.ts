@@ -1,7 +1,7 @@
 import { createSlice, createEntityAdapter } from '@reduxjs/toolkit';
 import Message from '../../models/message';
 
-const messagesAdapter = createEntityAdapter<Message>();
+export const messagesAdapter = createEntityAdapter<Message>();
 
 export default function createMessagesSlice(preloadedState = {}) {
   const initialState = messagesAdapter.getInitialState(preloadedState);

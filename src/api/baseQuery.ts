@@ -8,7 +8,7 @@ type Doc = {
   value?: unknown;
 };
 
-function transformMessageToDoc(message: Partial<Message>): Doc {
+export function transformMessageToDoc(message: Partial<Message>): Doc {
   return {
     _id: message.id,
     _rev: message.rev,
@@ -16,7 +16,7 @@ function transformMessageToDoc(message: Partial<Message>): Doc {
   };
 }
 
-function transformDocToMessage(doc: Doc): Partial<Message> {
+export function transformDocToMessage(doc: Doc): Partial<Message> {
   return {
     id: doc._id!,
     rev: doc._rev,
@@ -67,8 +67,24 @@ function createBaseQuery(db: PouchDB.Database) {
         }
       case "put":
         try {
-          const response = await db.put(transformMessageToDoc(record!));
-          return { data: { ...record!, rev: response.rev } };
+          let doc = {};
+          if (id) {
+            doc = await db.get(id);
+          }
+          const updatedDoc = transformMessageToDoc({
+            ...doc,
+            ...record,
+            rev: ('_rev' in doc ? doc._rev : undefined) as string | undefined, // Ensure using the latest _rev
+            id: id || record!.id || await db.allDocs().then(docs => `${docs.total_rows + 1}`), // Use UUID if ID not provided
+          });
+          const response = await db.put(updatedDoc);
+          return {
+            data: transformDocToMessage({
+              ...updatedDoc,
+              ...response,
+              _id: response.id,
+            }),
+          };
         } catch (error) {
           return { error: (error as Error).message };
         }

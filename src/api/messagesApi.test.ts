@@ -10,15 +10,17 @@ describe("messagesApi", () => {
     store = createStore({
       messages: {
         entities: {
-          1: { id: '1', content: "Hello" },
-          2: { id: '2', content: "World" },
+          1: { id: "1", content: "Hello" },
+          2: { id: "2", content: "World" },
         },
-        ids: ['1', '2'],
+        ids: ["1", "2"],
       },
     });
 
     const allDocs = await db.allDocs({ include_docs: true });
-    await db.bulkDocs(allDocs.rows.map((row) => ('doc' in row && { ...row.doc, _deleted: true })));
+    await db.bulkDocs(
+      allDocs.rows.map((row) => "doc" in row && { ...row.doc, _deleted: true })
+    );
 
     db.bulkDocs([
       { _id: "1", content: "Hello" },
@@ -28,77 +30,164 @@ describe("messagesApi", () => {
 
   describe("fetchMessages", () => {
     it("should fetch messages", async () => {
-      const messages = await store.dispatch(messageApi.endpoints.getMessages.initiate(['1', '2'])).unwrap();
+      const messages = await store
+        .dispatch(messageApi.endpoints.getMessages.initiate(["1", "2"]))
+        .unwrap();
       expect(messages).toEqual([
-        expect.objectContaining({ id: '1', content: "Hello", rev: expect.any(String) }),
-        expect.objectContaining({ id: '2', content: "World", rev: expect.any(String) }),
+        expect.objectContaining({
+          id: "1",
+          content: "Hello",
+          rev: expect.any(String),
+        }),
+        expect.objectContaining({
+          id: "2",
+          content: "World",
+          rev: expect.any(String),
+        }),
       ]);
     });
   });
 
   describe("fetchMessage", () => {
     it("should fetch a message", async () => {
-      const message = await store.dispatch(messageApi.endpoints.getMessage.initiate('1')).unwrap();
-      expect(message).toEqual(expect.objectContaining({ id: '1', content: "Hello", rev: expect.any(String) }));
+      const message = await store
+        .dispatch(messageApi.endpoints.getMessage.initiate("1"))
+        .unwrap();
+      expect(message).toEqual(
+        expect.objectContaining({
+          id: "1",
+          content: "Hello",
+          rev: expect.any(String),
+        })
+      );
     });
   });
 
-  describe("postMessage", () => {
-    it("should post a message", async () => {
-      const message = await store.dispatch(messageApi.endpoints.createMessage.initiate({ id: '3', content: "Hello" })).unwrap();
-      expect(message).toEqual(expect.objectContaining({ id: expect.any(String), content: "Hello", rev: expect.any(String) }));
+  describe("createMessage", () => {
+    it("should create a message", async () => {
+      const message = await store
+        .dispatch(
+          messageApi.endpoints.createMessage.initiate({
+            content: "Hello",
+          })
+        )
+        .unwrap();
+      expect(message).toEqual(
+        expect.objectContaining({
+          id: expect.any(String),
+          content: "Hello",
+          rev: expect.any(String),
+        })
+      );
     });
   });
 
   describe("postMessages", () => {
     it("should post messages", async () => {
-      const messages = await store.dispatch(messageApi.endpoints.createMessages.initiate([
-        { id: '3', content: "Hello" },
-        { id: '4', content: "World" },
-      ])).unwrap();
+      const messages = await store
+        .dispatch(
+          messageApi.endpoints.createMessages.initiate([
+            { id: "3", content: "Hello" },
+            { id: "4", content: "World" },
+          ])
+        )
+        .unwrap();
       expect(messages).toEqual([
-        expect.objectContaining({ id: expect.any(String), content: "Hello", rev: expect.any(String) }),
-        expect.objectContaining({ id: expect.any(String), content: "World", rev: expect.any(String) }),
+        expect.objectContaining({
+          id: expect.any(String),
+          content: "Hello",
+          rev: expect.any(String),
+        }),
+        expect.objectContaining({
+          id: expect.any(String),
+          content: "World",
+          rev: expect.any(String),
+        }),
+      ]);
+    });
+  });
+
+  describe("updateMessage", () => {
+    it("should update a message", async () => {
+      const message = await store
+        .dispatch(
+          messageApi.endpoints.updateMessage.initiate({
+            id: "1",
+            content: "Hello",
+          })
+        )
+        .unwrap();
+
+      expect(message).toEqual(
+        expect.objectContaining({
+          id: "1",
+          content: "Hello",
+        })
+      );
+    });
+  });
+
+  describe("updateMessages", () => {
+    it("should update messages", async () => {
+      const messages = await store
+        .dispatch(
+          messageApi.endpoints.updateMessages.initiate([
+            { id: "1", content: "Hello" },
+            { id: "2", content: "World" },
+          ])
+        )
+        .unwrap();
+      expect(messages).toEqual([
+        expect.objectContaining({
+          id: "1",
+          content: "Hello",
+        }),
+        expect.objectContaining({
+          id: "2",
+          content: "World",
+        }),
       ]);
     });
   });
 
   describe("deleteMessage", () => {
     it("should delete a message", async () => {
-      const message = await store.dispatch(messageApi.endpoints.deleteMessage.initiate('1')).unwrap();
-      expect(message).toEqual(expect.objectContaining({ id: '1', content: "Hello", rev: expect.any(String) }));
-      const messages = await store.dispatch(messageApi.endpoints.getMessages.initiate(['1', '2'])).unwrap();
+      const message = await store
+        .dispatch(messageApi.endpoints.deleteMessage.initiate("1"))
+        .unwrap();
+      expect(message).toEqual(
+        expect.objectContaining({
+          id: "1",
+          content: "Hello",
+          rev: expect.any(String),
+        })
+      );
+      const messages = await store
+        .dispatch(messageApi.endpoints.getMessages.initiate(["1", "2"]))
+        .unwrap();
       expect(messages.length).toBe(1);
     });
   });
 
   describe("deleteMessages", () => {
     it("should delete messages", async () => {
-      const messages = await store.dispatch(messageApi.endpoints.deleteMessages.initiate(['1', '2'])).unwrap();
+      const messages = await store
+        .dispatch(messageApi.endpoints.deleteMessages.initiate(["1", "2"]))
+        .unwrap();
       expect(messages).toEqual([
-        expect.objectContaining({ id: '1', content: "Hello", rev: expect.any(String) }),
-        expect.objectContaining({ id: '2', content: "World", rev: expect.any(String) }),
+        expect.objectContaining({
+          id: "1",
+          content: "Hello",
+          rev: expect.any(String),
+        }),
+        expect.objectContaining({
+          id: "2",
+          content: "World",
+          rev: expect.any(String),
+        }),
       ]);
       const allDocs = await db.allDocs({ include_docs: true });
       expect(allDocs.rows.length).toBe(0);
     });
   });
-
-  // describe("postMessage", () => {
-  //   it("should post a message", async () => {
-  //     const result = await store.dispatch(
-  //       messageApi.endpoints.postMessage({ message: "Hello" })
-  //     );
-  //     expect(result.data).toEqual({ id: 3, message: "Hello" });
-  //   });
-  // });
-
-  // describe("deleteMessage", () => {
-  //   it("should delete a message", async () => {
-  //     const result = await store.dispatch(
-  //       messageApi.endpoints.deleteMessage({ id: 1 })
-  //     );
-  //     expect(result.data).toEqual({ id: 1, message: "Hello" });
-  //   });
-  // });
 });

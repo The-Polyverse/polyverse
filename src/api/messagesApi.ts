@@ -24,10 +24,16 @@ export const messageApi = createApi({
       query: (id) => ({ method: "get", id }),
     }),
     createMessage: builder.mutation<Message, Partial<Message>>({
-      query: (newMessage) => ({ method: "put", record: newMessage }),
+      query: (newMessage) => ({ method: "put", record: newMessage, id: newMessage.id }),
     }),
     createMessages: builder.mutation<Message[], Partial<Message>[]>({
       query: (newMessages) => ({ method: "putMany", records: newMessages }),
+    }),
+    updateMessage: builder.mutation<Message, Partial<Message>>({
+      query: (message) => ({ method: "put", id: message.id, record: message }),
+    }),
+    updateMessages: builder.mutation<Message[], Partial<Message>[]>({
+      query: (changes) => ({ method: "putMany", records: changes }),
     }),
     deleteMessage: builder.mutation<Message, string>({
       query: (id) => ({ method: "delete", id }),
@@ -40,6 +46,9 @@ export const messageApi = createApi({
 
 export const {
   useGetMessageQuery,
+  useGetMessagesQuery,
   useCreateMessageMutation,
+  useCreateMessagesMutation,
   useDeleteMessageMutation,
+  useDeleteMessagesMutation,
 } = messageApi;

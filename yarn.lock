@@ -6706,6 +6706,22 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@xstate/react@npm:^4.0.1":
+  version: 4.0.1
+  resolution: "@xstate/react@npm:4.0.1"
+  dependencies:
+    use-isomorphic-layout-effect: "npm:^1.1.2"
+    use-sync-external-store: "npm:^1.0.0"
+  peerDependencies:
+    react: ^16.8.0 || ^17.0.0 || ^18.0.0
+    xstate: ^5.1.0
+  peerDependenciesMeta:
+    xstate:
+      optional: true
+  checksum: e82cb5d98cc38b7d089d9a64f7ef0e17822d8239490b7125015ea59d99cf758f07a5340bfdf7c582bb0a7fc23cda0d16b4c2300f563b81985c18164328e0d69b
+  languageName: node
+  linkType: hard
+
 "@yarnpkg/esbuild-plugin-pnp@npm:^3.0.0-rc.10":
   version: 3.0.0-rc.15
   resolution: "@yarnpkg/esbuild-plugin-pnp@npm:3.0.0-rc.15"
@@ -13956,6 +13972,7 @@ __metadata:
     "@vitejs/plugin-react": "npm:^4.0.3"
     "@vitest/coverage-v8": "npm:^1.0.2"
     "@vitest/ui": "npm:^1.0.2"
+    "@xstate/react": "npm:^4.0.1"
     autoprefixer: "npm:^10.4.16"
     chromatic: "npm:^10.1.0"
     detect-package-manager: "npm:^3.0.1"
@@ -13988,6 +14005,7 @@ __metadata:
     url: "npm:^0.11.3"
     vite: "npm:^5.0.6"
     vitest: "npm:^1.0.2"
+    xstate: "npm:^5.2.0"
   peerDependencies:
     msw: <2.0.0
     vite: 4.2.0
@@ -16699,6 +16717,18 @@ __metadata:
   languageName: node
   linkType: hard
 
+"use-isomorphic-layout-effect@npm:^1.1.2":
+  version: 1.1.2
+  resolution: "use-isomorphic-layout-effect@npm:1.1.2"
+  peerDependencies:
+    react: ^16.8.0 || ^17.0.0 || ^18.0.0
+  peerDependenciesMeta:
+    "@types/react":
+      optional: true
+  checksum: d8deea8b85e55ac6daba237a889630bfdbf0ebf60e9e22b6a78a78c26fabe6025e04ada7abef1e444e6786227d921e648b2707db8b3564daf757264a148a6e23
+  languageName: node
+  linkType: hard
+
 "use-resize-observer@npm:^9.1.0":
   version: 9.1.0
   resolution: "use-resize-observer@npm:9.1.0"
@@ -17304,6 +17334,13 @@ __metadata:
   version: 1.0.1
   resolution: "xml@npm:1.0.1"
   checksum: 04bcc9b8b5e7b49392072fbd9c6b0f0958bd8e8f8606fee460318e43991349a68cbc5384038d179ff15aef7d222285f69ca0f067f53d071084eb14c7fdb30411
+  languageName: node
+  linkType: hard
+
+"xstate@npm:^5.2.0":
+  version: 5.2.0
+  resolution: "xstate@npm:5.2.0"
+  checksum: ac1d959e4a4b0f7f874e1a7bb50cc695e94676a7f096ff9695ef176fc824383eda028d2edf8e13d61cb67c9c4186a6d1e1910a3a3b2f0be7ffa3e8205bd46b4c
   languageName: node
   linkType: hard
 

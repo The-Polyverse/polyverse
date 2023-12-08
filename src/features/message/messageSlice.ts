@@ -1,18 +1,22 @@
-import { createSlice, createEntityAdapter } from '@reduxjs/toolkit';
-import Message from '../../models/message';
+import {
+  createSlice,
+  createEntityAdapter,
+  createSelector,
+} from "@reduxjs/toolkit";
+import Message from "../../models/message";
+import { RootState } from "../../app/store";
 
 export const messagesAdapter = createEntityAdapter<Message>();
 
 export default function createMessagesSlice(preloadedState = {}) {
   const initialState = messagesAdapter.getInitialState(preloadedState);
   return createSlice({
-    name: 'messages',
+    name: "messages",
     initialState: initialState,
     reducers: {
       addMessage: messagesAdapter.addOne,
       updateMessage: messagesAdapter.updateOne,
       removeMessage: messagesAdapter.removeOne,
-      removeMessageNoSync: messagesAdapter.removeOne,
       addMessages: messagesAdapter.addMany,
       updateMessages: messagesAdapter.updateMany,
       removeMessages: messagesAdapter.removeMany,
@@ -24,8 +28,8 @@ export default function createMessagesSlice(preloadedState = {}) {
 export type MessageEntity = {
   ids: string[];
   entities: {
-    [key: string]: Message
-  }
+    [key: string]: Message;
+  };
 };
 
 export const {
@@ -34,8 +38,12 @@ export const {
   selectEntities: selectMessageEntities,
   selectAll: selectAllMessages,
   selectTotal: selectTotalMessages,
-} = messagesAdapter.getSelectors((state: { messages: MessageEntity }) => state.messages);
+} = messagesAdapter.getSelectors((state: RootState) => state.messages);
 
-export function selectMessagesByIds(state: { messages: MessageEntity }, ids: string[]): Message[] {
-  return ids.map(id => selectMessageById(state, id)).filter(message => message !== undefined) as Message[];
-}
+export const selectMessagesByIds = createSelector(
+  [selectAllMessages, selectMessageIds, (_: RootState, ids: string[]) => ids],
+  (allMessages, allIds, ids) =>
+    allMessages.filter((message) =>
+      ids.filter((id) => allIds.includes(id)).includes(message.id)
+    )
+);

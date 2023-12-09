@@ -11,16 +11,16 @@ import { createMachine } from "xstate";
  */
 const messageMachine = createMachine({
   /** @xstate-layout N4IgpgJg5mDOIC5QFs6wIYwHQEsB2OALjugDY4BekAxAMYBOY6hYA2gAwC6ioADgPawiOfnh4gAHogBMAFmlYArADZ2AdjkBmaQE45ADnUAaEAE9EARn0LFizWsXTV+ncs3qAvh5OpYGbPjCZJQ0jIT0OGAAbmxc4gJCxKLiUggWyopKytKK7KoqOpqaKibmCPKyWHnKNe4Waq5ePmiYYLgExMFUENQc3EggCcLJA6nS+pUORWp5heyyFrLKpYj6Fkrsm+zS0uo79spNIL7+bQxMLD1RwRDMsf18gsNio4hqFuuyeU7bakuyigsKwQmmU+iw6RqGUW7E0AKOJ1aWDCEWiNFopFE93iTySL1AqVkcKwTkMOmsFh07EUC2Bmn0yiwekBcPmdh0CwRLWwKMiMR6AFdeLcWH0cYkRPjJIhZF8qkt9C4aTpydIgWZEKoFAtaq5QVZ0ly-EjeWiehAwKQwKK4gMhniUjL7FV9IodLkrAyZuqyktNEz3NINNlFPoGoojadkdbUfzqOh6LQABY4GJiu24yWO8py+ZgpWyFUU4EGEm5TbyOxuTQ6SNI67kEU0XhgehCWCEdOPCUjAmWSn+lQ5FTpelWEtyyHKDQTZTuuQR7zHbltBs4Js9FttnAd1gWB6DTO96VpAdZYfKUdrfTA2RrLBQmoWcYzBZwuvYIUb6hrptdw89lKqT1OwOgkvI0igjofwAm6dKXlgOrQpSqh6GoH5tAmyapqEcCEPwjD-vaWavAg7yfN8Wp-MoAI+jIshqIhkIzHosKbHYGFYFhKZxlu7adra3bPNm5GIZRvz-ICwIfGBSEzHOiy2HonGMB2BE0L+dxEUeQGIByjFOLYbjZNBhiaBOjFyaBuzuNSmica29DqYKwpaYJAHCaRFiKA0JIZDUagMhMazLBq5T3o+l4vvMFj2UceD8Ba8ADIiMDip5fYIAAtDUfmUq4NJ3tBJRhVl4I5FsmyuqB1iFJxgSdOQ3TpQ6pFZVYeUqhksouA4JVlL5FWbA02jGRYnHnHcEAtSRmU+YySGXvY6gTHRIJgg+j6Al8cKLs0xo8jGfKQDNx5jO6VRqKChjzKxmhrX6AbbIqhbTvooJ7cuB2rjcU2nbpaR5IxYJ-DM7hRfI8GfFO8lzq4YacXxO6XP92aLLsWBg95ao4zkaglvdmOFiq8lFdZnFfn9GaAWjLEPmGgIWHkz7sC4wJuv6ujpKGNbycUnEWlaKPUxlJ4qP6DQgyy05qBkt7ZPTz3bNjd7oUuqWYYmPEnSLrVzYFVSVTJOTyKFZRyOs5abJehjjD5av7VGqn4Yw0267NJ7ves1hrLCSxXRo5lhXIjE6Mx1lsXZDn0E5ruo15soS1YfzPsUmzure1gQo+z5hjF75eB4QA */
-  types: {} as {
-    context: {
+  types: {
+    context: {} as {
       id: string;
       content: string;
-    };
-    input: {
+    },
+    input: {} as {
       id: string;
       content: string;
-    };
-    events:
+    },
+    events: {} as
       | { type: "create" }
       | { type: "clone" }
       | { type: "retrieve" }
@@ -30,8 +30,8 @@ const messageMachine = createMachine({
       | { type: "delete" }
       | { type: "archive" }
       | { type: "restore" }
-      | { type: "error" };
-    states: {
+      | { type: "error" },
+    states: {} as {
       initialized: object;
       created: object;
       retrieved: object;
@@ -42,7 +42,7 @@ const messageMachine = createMachine({
       archived: object;
       restored: object;
       errored: object;
-    };
+    },
   },
   id: "message",
   context: ({ input }) => ({ ...input }),
@@ -56,7 +56,7 @@ const messageMachine = createMachine({
       always: {
         target: "archived",
         guard: "isArchived",
-        // @ts-expect-error the visual editor doesn't support the `cond` property yet
+        // @ts-expect-error the visual editor doesn't support the `guard` property yet
         cond: "isArchived",
       },
     },

@@ -31,18 +31,6 @@ const messageMachine = createMachine({
       | { type: "archive" }
       | { type: "restore" }
       | { type: "error" },
-    states: {} as {
-      initialized: object;
-      created: object;
-      retrieved: object;
-      validated: object;
-      persisted: object;
-      updated: object;
-      deleted: object;
-      archived: object;
-      restored: object;
-      errored: object;
-    },
   },
   id: "message",
   context: ({ input }) => ({ ...input }),

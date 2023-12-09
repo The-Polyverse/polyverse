@@ -1,6 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { setupListeners } from "@reduxjs/toolkit/query";
-
 import counterReducer from "../features/counter/counterSlice";
 import createMessagesSlice from "../features/message/messageSlice";
 import type { MessageEntity } from "../features/message/messageSlice";
@@ -21,13 +20,13 @@ export function createStore(preloadedState: PreloadedState) {
     reducer: {
       counter: counterReducer,
       messages: messagesReducer,
-      [messageApi.reducerPath]: messageApi.reducer,
+      [api.reducerPath]: api.reducer,
     },
     preloadedState,
     middleware: (getDefaultMiddleware) => {
       return getDefaultMiddleware()
         .prepend(listenerMiddleware.middleware)
-        .concat(messageApi.middleware);
+        .concat(api.middleware);
     },
   });
 

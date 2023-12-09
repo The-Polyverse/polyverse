@@ -1,15 +1,16 @@
 import listenerMiddleware from "./listenerMiddleware.ts";
 import createMessagesSlice from "../features/message/messageSlice.ts";
-import { messageApi } from "../api/messagesApi.ts";
+import { api } from "../api/api.ts";
 
 const messageSlice = createMessagesSlice();
+const resource = "messages";
 
 listenerMiddleware.startListening({
   actionCreator: messageSlice.actions.addMessage,
   effect: (action, listenerApi) => {
     const { dispatch } = listenerApi;
 
-    dispatch(messageApi.endpoints.createMessage.initiate(action.payload));
+    dispatch(api.endpoints.createOne.initiate({ resource, ...action.payload }));
   },
 });
 
@@ -19,9 +20,12 @@ listenerMiddleware.startListening({
     const { dispatch } = listenerApi;
 
     dispatch(
-      messageApi.endpoints.updateMessage.initiate({
-        id: `${action.payload.id}`,
-        content: action.payload.changes.content,
+      api.endpoints.updateOne.initiate({
+        resource,
+        updatedResource: {
+          id: `${action.payload.id}`,
+          content: action.payload.changes.content,
+        }
       })
     );
   },
@@ -33,9 +37,10 @@ listenerMiddleware.startListening({
     const { dispatch } = listenerApi;
 
     dispatch(
-       messageApi.endpoints.deleteMessage.initiate(
-        `${action.payload}`
-      )
+      api.endpoints.deleteOne.initiate({
+        resource, 
+        id: `${action.payload}`
+      })
     );
   },
 });

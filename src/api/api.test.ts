@@ -1,11 +1,12 @@
 import { describe, it, beforeEach, expect } from "vitest";
 
 import { createStore } from "../app/store";
-import { messageApi, db } from "./messagesApi";
+import { api } from "./api";
 
 let store: ReturnType<typeof createStore>;
+const resource = "messages";
 
-describe("messagesApi", () => {
+describe("api", () => {
   beforeEach(async () => {
     store = createStore({
       messages: {
@@ -16,22 +17,12 @@ describe("messagesApi", () => {
         ids: ["1", "2"],
       },
     });
-
-    const allDocs = await db.allDocs({ include_docs: true });
-    await db.bulkDocs(
-      allDocs.rows.map((row) => "doc" in row && { ...row.doc, _deleted: true })
-    );
-
-    db.bulkDocs([
-      { _id: "1", content: "Hello" },
-      { _id: "2", content: "World" },
-    ]);
   });
 
   describe("fetchMessages", () => {
     it("should fetch messages", async () => {
       const messages = await store
-        .dispatch(messageApi.endpoints.getMessages.initiate(["1", "2"]))
+        .dispatch(api.endpoints.getMany.initiate({ resource, ids: ["1", "2"] }))
         .unwrap();
       expect(messages).toEqual([
         expect.objectContaining({
@@ -51,7 +42,7 @@ describe("messagesApi", () => {
   describe("fetchMessage", () => {
     it("should fetch a message", async () => {
       const message = await store
-        .dispatch(messageApi.endpoints.getMessage.initiate("1"))
+        .dispatch(api.endpoints.getOne.initiate({ resource, id: "1" }))
         .unwrap();
       expect(message).toEqual(
         expect.objectContaining({
@@ -67,8 +58,11 @@ describe("messagesApi", () => {
     it("should create a message", async () => {
       const message = await store
         .dispatch(
-          messageApi.endpoints.createMessage.initiate({
-            content: "Hello",
+          api.endpoints.createOne.initiate({
+            resource,
+            newResource: {
+              content: "Hello",
+            }
           })
         )
         .unwrap();
@@ -86,10 +80,13 @@ describe("messagesApi", () => {
     it("should post messages", async () => {
       const messages = await store
         .dispatch(
-          messageApi.endpoints.createMessages.initiate([
-            { id: "3", content: "Hello" },
-            { id: "4", content: "World" },
-          ])
+          api.endpoints.createMessages.initiate({ 
+            resource,
+            newResources: [
+              { id: "3", content: "Hello" },
+              { id: "4", content: "World" },
+            ]
+          })
         )
         .unwrap();
       expect(messages).toEqual([
@@ -111,9 +108,12 @@ describe("messagesApi", () => {
     it("should update a message", async () => {
       const message = await store
         .dispatch(
-          messageApi.endpoints.updateMessage.initiate({
-            id: "1",
-            content: "Hello",
+          api.endpoints.updateMessage.initiate({
+            resource,
+            updatedResource: {
+              id: "1",
+              content: "Hello",
+            }
           })
         )
         .unwrap();
@@ -131,10 +131,13 @@ describe("messagesApi", () => {
     it("should update messages", async () => {
       const messages = await store
         .dispatch(
-          messageApi.endpoints.updateMessages.initiate([
-            { id: "1", content: "Hello" },
-            { id: "2", content: "World" },
-          ])
+          api.endpoints.updateMessages.initiate({
+            resource,
+            updatedResources: [
+              { id: "1", content: "Hello" },
+              { id: "2", content: "World" },
+            ]
+          })
         )
         .unwrap();
       expect(messages).toEqual([
@@ -153,7 +156,7 @@ describe("messagesApi", () => {
   describe("deleteMessage", () => {
     it("should delete a message", async () => {
       const message = await store
-        .dispatch(messageApi.endpoints.deleteMessage.initiate("1"))
+        .dispatch(api.endpoints.deleteMessage.initiate({ resource, id: "1" }))
         .unwrap();
       expect(message).toEqual(
         expect.objectContaining({
@@ -163,7 +166,7 @@ describe("messagesApi", () => {
         })
       );
       const messages = await store
-        .dispatch(messageApi.endpoints.getMessages.initiate(["1", "2"]))
+        .dispatch(api.endpoints.getMessages.initiate({ resource, ids: ["1", "2"] }))
         .unwrap();
       expect(messages.length).toBe(1);
     });
@@ -172,7 +175,7 @@ describe("messagesApi", () => {
   describe("deleteMessages", () => {
     it("should delete messages", async () => {
       const messages = await store
-        .dispatch(messageApi.endpoints.deleteMessages.initiate(["1", "2"]))
+        .dispatch(api.endpoints.deleteMessages.initiate({ resource, ids: ["1", "2"] }))
         .unwrap();
       expect(messages).toEqual([
         expect.objectContaining({

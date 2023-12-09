@@ -1,5 +1,7 @@
 import { BaseQueryFn } from "@reduxjs/toolkit/query";
 import PouchDB from "pouchdb";
+import memoryAdapter from "pouchdb-adapter-memory";
+
 import Message from "../models/message";
 
 type Doc = {
@@ -24,10 +26,10 @@ export function transformDocToMessage(doc: Doc): Partial<Message> {
   };
 }
 
-function createBaseQuery(db: PouchDB.Database) {
-  // Define the baseQuery
+function createBaseQuery() {
   const baseQuery: BaseQueryFn<
     {
+      resource: string;
       method: string;
       record?: Message | Partial<Message>;
       records?: Message[] | Partial<Message>[];
@@ -36,7 +38,9 @@ function createBaseQuery(db: PouchDB.Database) {
     },
     unknown,
     unknown
-  > = async ({ method, record, records, id, ids }) => {
+  > = async ({ resource, method, record, records, id, ids }) => {
+    const db = new PouchDB(resource, { adapter: "memory" });
+    
     switch (method) {
       case "get":
         try {

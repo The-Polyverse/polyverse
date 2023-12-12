@@ -1,4 +1,4 @@
-import React from "react";
+import React, { StrictMode } from "react";
 import ReactDOM from "react-dom/client";
 
 import App from "./App";
@@ -8,14 +8,14 @@ const rootHasSSRContent = document.getElementById("root")!.hasChildNodes();
 if (rootHasSSRContent) {
   ReactDOM.hydrateRoot(
     document.getElementById("root")!,
-    <React.StrictMode>
+    <StrictMode>
       <App />
-    </React.StrictMode>
+    </StrictMode>
   );
 } else {
   ReactDOM.createRoot(document.getElementById("root")!).render(
-    <React.StrictMode>
+    <StrictMode>
       <App />
-    </React.StrictMode>
+    </StrictMode>
   );
 }

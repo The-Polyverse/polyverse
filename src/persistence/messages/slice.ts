@@ -2,7 +2,12 @@ import { EntityState, createSlice } from "@reduxjs/toolkit";
 import Message from "../../types/message";
 import createMessageEntity from "./entity";
 
-export default function createMessageSlice(state: EntityState<Message>) {
+const initialState: EntityState<Message> = {
+  ids: [],
+  entities: {},
+};
+
+export default function createMessageSlice(state: EntityState<Message> = initialState) {
   const { entity } = createMessageEntity();
   const slice = createSlice({
     name: "messages",

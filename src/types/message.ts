@@ -4,6 +4,7 @@ import {
   TypeMetadata,
   TypeConfiguration,
 } from "@dipscope/type-manager";
+import { EntityId } from "@reduxjs/toolkit";
 
 class Message {
   public constructor(
@@ -24,8 +25,8 @@ export class MessageConfiguration implements TypeConfiguration<Message> {
 TypeManager.applyTypeConfiguration(Message, new MessageConfiguration());
 
 export type MessageEntity = {
-  ids: string[];
+  ids: EntityId[];
   entities: {
-      [key: string]: Message;
+    [key: string]: Message;
   };
 }

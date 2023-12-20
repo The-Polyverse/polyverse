@@ -22,3 +22,10 @@ export class MessageConfiguration implements TypeConfiguration<Message> {
 }
 
 TypeManager.applyTypeConfiguration(Message, new MessageConfiguration());
+
+export type MessageEntity = {
+  ids: string[];
+  entities: {
+      [key: string]: Message;
+  };
+}

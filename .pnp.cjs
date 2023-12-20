@@ -26,6 +26,10 @@ const RAW_RUNTIME_STATE =
       [null, {\
         "packageLocation": "./",\
         "packageDependencies": [\
+          ["@dipscope/entity-store", "virtual:2ecf2631eed8f9581b10bde35df160d8e7948b331b1670a44dbc7e85249a811665954336001d64d1d8756f7e69cc129bdae83d1beca10aa2069e2a3a552ee6d6#npm:2.0.3"],\
+          ["@dipscope/in-memory-entity-provider", "virtual:2ecf2631eed8f9581b10bde35df160d8e7948b331b1670a44dbc7e85249a811665954336001d64d1d8756f7e69cc129bdae83d1beca10aa2069e2a3a552ee6d6#npm:2.0.0"],\
+          ["@dipscope/json-api-entity-provider", "virtual:2ecf2631eed8f9581b10bde35df160d8e7948b331b1670a44dbc7e85249a811665954336001d64d1d8756f7e69cc129bdae83d1beca10aa2069e2a3a552ee6d6#npm:2.2.0"],\
+          ["@dipscope/type-manager", "virtual:2ecf2631eed8f9581b10bde35df160d8e7948b331b1670a44dbc7e85249a811665954336001d64d1d8756f7e69cc129bdae83d1beca10aa2069e2a3a552ee6d6#npm:7.2.0"],\
           ["@reduxjs/toolkit", "virtual:2ecf2631eed8f9581b10bde35df160d8e7948b331b1670a44dbc7e85249a811665954336001d64d1d8756f7e69cc129bdae83d1beca10aa2069e2a3a552ee6d6#npm:1.9.7"],\
           ["@refinedev/core", "virtual:2ecf2631eed8f9581b10bde35df160d8e7948b331b1670a44dbc7e85249a811665954336001d64d1d8756f7e69cc129bdae83d1beca10aa2069e2a3a552ee6d6#npm:4.46.0"],\
           ["@storybook/addon-essentials", "virtual:2ecf2631eed8f9581b10bde35df160d8e7948b331b1670a44dbc7e85249a811665954336001d64d1d8756f7e69cc129bdae83d1beca10aa2069e2a3a552ee6d6#npm:7.6.4"],\
@@ -40,6 +44,7 @@ const RAW_RUNTIME_STATE =
           ["@storybook/test-runner", "npm:0.16.0"],\
           ["@storybook/testing-library", "npm:0.2.2"],\
           ["@types/express", "npm:4.17.21"],\
+          ["@types/lodash", "npm:4.14.202"],\
           ["@types/pouchdb", "npm:6.4.2"],\
           ["@types/react", "npm:18.2.42"],\
           ["@types/react-dom", "npm:18.2.17"],\
@@ -64,6 +69,7 @@ const RAW_RUNTIME_STATE =
           ["http-server", "npm:14.1.1"],\
           ["isbot", "npm:3.7.1"],\
           ["lightningcss", "npm:1.22.1"],\
+          ["lodash", "npm:4.17.21"],\
           ["msw", "virtual:2ecf2631eed8f9581b10bde35df160d8e7948b331b1670a44dbc7e85249a811665954336001d64d1d8756f7e69cc129bdae83d1beca10aa2069e2a3a552ee6d6#npm:1.3.2"],\
           ["msw-storybook-addon", "virtual:2ecf2631eed8f9581b10bde35df160d8e7948b331b1670a44dbc7e85249a811665954336001d64d1d8756f7e69cc129bdae83d1beca10aa2069e2a3a552ee6d6#npm:1.10.0"],\
           ["path", "npm:0.12.7"],\
@@ -2890,6 +2896,119 @@ const RAW_RUNTIME_STATE =
         "packageLocation": "../../home/codespace/.yarn/berry/cache/@colors-colors-npm-1.5.0-875af3a8b4-10c0.zip/node_modules/@colors/colors/",\
         "packageDependencies": [\
           ["@colors/colors", "npm:1.5.0"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["@dipscope/entity-store", [\
+      ["npm:2.0.3", {\
+        "packageLocation": "../../home/codespace/.yarn/berry/cache/@dipscope-entity-store-npm-2.0.3-b04e9bd464-10c0.zip/node_modules/@dipscope/entity-store/",\
+        "packageDependencies": [\
+          ["@dipscope/entity-store", "npm:2.0.3"]\
+        ],\
+        "linkType": "SOFT"\
+      }],\
+      ["virtual:2ecf2631eed8f9581b10bde35df160d8e7948b331b1670a44dbc7e85249a811665954336001d64d1d8756f7e69cc129bdae83d1beca10aa2069e2a3a552ee6d6#npm:2.0.3", {\
+        "packageLocation": "./.yarn/__virtual__/@dipscope-entity-store-virtual-e24537eb76/3/home/codespace/.yarn/berry/cache/@dipscope-entity-store-npm-2.0.3-b04e9bd464-10c0.zip/node_modules/@dipscope/entity-store/",\
+        "packageDependencies": [\
+          ["@dipscope/entity-store", "virtual:2ecf2631eed8f9581b10bde35df160d8e7948b331b1670a44dbc7e85249a811665954336001d64d1d8756f7e69cc129bdae83d1beca10aa2069e2a3a552ee6d6#npm:2.0.3"],\
+          ["@dipscope/type-manager", "virtual:2ecf2631eed8f9581b10bde35df160d8e7948b331b1670a44dbc7e85249a811665954336001d64d1d8756f7e69cc129bdae83d1beca10aa2069e2a3a552ee6d6#npm:7.2.0"],\
+          ["@types/dipscope__type-manager", null],\
+          ["@types/lodash", "npm:4.14.202"],\
+          ["lodash", "npm:4.17.21"],\
+          ["tslib", "npm:2.6.2"]\
+        ],\
+        "packagePeers": [\
+          "@dipscope/type-manager",\
+          "@types/dipscope__type-manager",\
+          "@types/lodash",\
+          "lodash"\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["@dipscope/in-memory-entity-provider", [\
+      ["npm:2.0.0", {\
+        "packageLocation": "../../home/codespace/.yarn/berry/cache/@dipscope-in-memory-entity-provider-npm-2.0.0-f2960fb7f5-10c0.zip/node_modules/@dipscope/in-memory-entity-provider/",\
+        "packageDependencies": [\
+          ["@dipscope/in-memory-entity-provider", "npm:2.0.0"]\
+        ],\
+        "linkType": "SOFT"\
+      }],\
+      ["virtual:2ecf2631eed8f9581b10bde35df160d8e7948b331b1670a44dbc7e85249a811665954336001d64d1d8756f7e69cc129bdae83d1beca10aa2069e2a3a552ee6d6#npm:2.0.0", {\
+        "packageLocation": "./.yarn/__virtual__/@dipscope-in-memory-entity-provider-virtual-007e6dd0ad/3/home/codespace/.yarn/berry/cache/@dipscope-in-memory-entity-provider-npm-2.0.0-f2960fb7f5-10c0.zip/node_modules/@dipscope/in-memory-entity-provider/",\
+        "packageDependencies": [\
+          ["@dipscope/in-memory-entity-provider", "virtual:2ecf2631eed8f9581b10bde35df160d8e7948b331b1670a44dbc7e85249a811665954336001d64d1d8756f7e69cc129bdae83d1beca10aa2069e2a3a552ee6d6#npm:2.0.0"],\
+          ["@dipscope/entity-store", "virtual:2ecf2631eed8f9581b10bde35df160d8e7948b331b1670a44dbc7e85249a811665954336001d64d1d8756f7e69cc129bdae83d1beca10aa2069e2a3a552ee6d6#npm:2.0.3"],\
+          ["@dipscope/type-manager", "virtual:2ecf2631eed8f9581b10bde35df160d8e7948b331b1670a44dbc7e85249a811665954336001d64d1d8756f7e69cc129bdae83d1beca10aa2069e2a3a552ee6d6#npm:7.2.0"],\
+          ["@types/dipscope__entity-store", null],\
+          ["@types/dipscope__type-manager", null],\
+          ["@types/lodash", "npm:4.14.202"],\
+          ["lodash", "npm:4.17.21"],\
+          ["tslib", "npm:2.6.2"]\
+        ],\
+        "packagePeers": [\
+          "@dipscope/entity-store",\
+          "@dipscope/type-manager",\
+          "@types/dipscope__entity-store",\
+          "@types/dipscope__type-manager",\
+          "@types/lodash",\
+          "lodash"\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["@dipscope/json-api-entity-provider", [\
+      ["npm:2.2.0", {\
+        "packageLocation": "../../home/codespace/.yarn/berry/cache/@dipscope-json-api-entity-provider-npm-2.2.0-957f60589e-10c0.zip/node_modules/@dipscope/json-api-entity-provider/",\
+        "packageDependencies": [\
+          ["@dipscope/json-api-entity-provider", "npm:2.2.0"]\
+        ],\
+        "linkType": "SOFT"\
+      }],\
+      ["virtual:2ecf2631eed8f9581b10bde35df160d8e7948b331b1670a44dbc7e85249a811665954336001d64d1d8756f7e69cc129bdae83d1beca10aa2069e2a3a552ee6d6#npm:2.2.0", {\
+        "packageLocation": "./.yarn/__virtual__/@dipscope-json-api-entity-provider-virtual-ce686178be/3/home/codespace/.yarn/berry/cache/@dipscope-json-api-entity-provider-npm-2.2.0-957f60589e-10c0.zip/node_modules/@dipscope/json-api-entity-provider/",\
+        "packageDependencies": [\
+          ["@dipscope/json-api-entity-provider", "virtual:2ecf2631eed8f9581b10bde35df160d8e7948b331b1670a44dbc7e85249a811665954336001d64d1d8756f7e69cc129bdae83d1beca10aa2069e2a3a552ee6d6#npm:2.2.0"],\
+          ["@dipscope/entity-store", "virtual:2ecf2631eed8f9581b10bde35df160d8e7948b331b1670a44dbc7e85249a811665954336001d64d1d8756f7e69cc129bdae83d1beca10aa2069e2a3a552ee6d6#npm:2.0.3"],\
+          ["@dipscope/type-manager", "virtual:2ecf2631eed8f9581b10bde35df160d8e7948b331b1670a44dbc7e85249a811665954336001d64d1d8756f7e69cc129bdae83d1beca10aa2069e2a3a552ee6d6#npm:7.2.0"],\
+          ["@types/dipscope__entity-store", null],\
+          ["@types/dipscope__type-manager", null],\
+          ["@types/lodash", "npm:4.14.202"],\
+          ["cross-fetch", "npm:3.1.8"],\
+          ["lodash", "npm:4.17.21"],\
+          ["tslib", "npm:2.6.2"]\
+        ],\
+        "packagePeers": [\
+          "@dipscope/entity-store",\
+          "@dipscope/type-manager",\
+          "@types/dipscope__entity-store",\
+          "@types/dipscope__type-manager",\
+          "@types/lodash",\
+          "lodash"\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["@dipscope/type-manager", [\
+      ["npm:7.2.0", {\
+        "packageLocation": "../../home/codespace/.yarn/berry/cache/@dipscope-type-manager-npm-7.2.0-37e3129459-10c0.zip/node_modules/@dipscope/type-manager/",\
+        "packageDependencies": [\
+          ["@dipscope/type-manager", "npm:7.2.0"]\
+        ],\
+        "linkType": "SOFT"\
+      }],\
+      ["virtual:2ecf2631eed8f9581b10bde35df160d8e7948b331b1670a44dbc7e85249a811665954336001d64d1d8756f7e69cc129bdae83d1beca10aa2069e2a3a552ee6d6#npm:7.2.0", {\
+        "packageLocation": "./.yarn/__virtual__/@dipscope-type-manager-virtual-9700f52fae/3/home/codespace/.yarn/berry/cache/@dipscope-type-manager-npm-7.2.0-37e3129459-10c0.zip/node_modules/@dipscope/type-manager/",\
+        "packageDependencies": [\
+          ["@dipscope/type-manager", "virtual:2ecf2631eed8f9581b10bde35df160d8e7948b331b1670a44dbc7e85249a811665954336001d64d1d8756f7e69cc129bdae83d1beca10aa2069e2a3a552ee6d6#npm:7.2.0"],\
+          ["@types/lodash", "npm:4.14.202"],\
+          ["lodash", "npm:4.17.21"],\
+          ["tslib", "npm:2.6.2"]\
+        ],\
+        "packagePeers": [\
+          "@types/lodash",\
+          "lodash"\
         ],\
         "linkType": "HARD"\
       }]\
@@ -12638,6 +12757,16 @@ const RAW_RUNTIME_STATE =
         "linkType": "HARD"\
       }]\
     ]],\
+    ["cross-fetch", [\
+      ["npm:3.1.8", {\
+        "packageLocation": "../../home/codespace/.yarn/berry/cache/cross-fetch-npm-3.1.8-71c3c05709-10c0.zip/node_modules/cross-fetch/",\
+        "packageDependencies": [\
+          ["cross-fetch", "npm:3.1.8"],\
+          ["node-fetch", "virtual:d447853e0677566bf80e87bab8672555271c08ad008caaed1c24c3db69ac6837849e59a2c7b66a10c96fd3ea5d03fb3ebf73717d4583088958132741ef4fb729#npm:2.7.0"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
     ["cross-spawn", [\
       ["npm:7.0.3", {\
         "packageLocation": "../../home/codespace/.yarn/berry/cache/cross-spawn-npm-7.0.3-e4ff3e65b3-10c0.zip/node_modules/cross-spawn/",\
@@ -19247,6 +19376,10 @@ const RAW_RUNTIME_STATE =
         "packageLocation": "./",\
         "packageDependencies": [\
           ["polyverse-vite", "workspace:."],\
+          ["@dipscope/entity-store", "virtual:2ecf2631eed8f9581b10bde35df160d8e7948b331b1670a44dbc7e85249a811665954336001d64d1d8756f7e69cc129bdae83d1beca10aa2069e2a3a552ee6d6#npm:2.0.3"],\
+          ["@dipscope/in-memory-entity-provider", "virtual:2ecf2631eed8f9581b10bde35df160d8e7948b331b1670a44dbc7e85249a811665954336001d64d1d8756f7e69cc129bdae83d1beca10aa2069e2a3a552ee6d6#npm:2.0.0"],\
+          ["@dipscope/json-api-entity-provider", "virtual:2ecf2631eed8f9581b10bde35df160d8e7948b331b1670a44dbc7e85249a811665954336001d64d1d8756f7e69cc129bdae83d1beca10aa2069e2a3a552ee6d6#npm:2.2.0"],\
+          ["@dipscope/type-manager", "virtual:2ecf2631eed8f9581b10bde35df160d8e7948b331b1670a44dbc7e85249a811665954336001d64d1d8756f7e69cc129bdae83d1beca10aa2069e2a3a552ee6d6#npm:7.2.0"],\
           ["@reduxjs/toolkit", "virtual:2ecf2631eed8f9581b10bde35df160d8e7948b331b1670a44dbc7e85249a811665954336001d64d1d8756f7e69cc129bdae83d1beca10aa2069e2a3a552ee6d6#npm:1.9.7"],\
           ["@refinedev/core", "virtual:2ecf2631eed8f9581b10bde35df160d8e7948b331b1670a44dbc7e85249a811665954336001d64d1d8756f7e69cc129bdae83d1beca10aa2069e2a3a552ee6d6#npm:4.46.0"],\
           ["@storybook/addon-essentials", "virtual:2ecf2631eed8f9581b10bde35df160d8e7948b331b1670a44dbc7e85249a811665954336001d64d1d8756f7e69cc129bdae83d1beca10aa2069e2a3a552ee6d6#npm:7.6.4"],\
@@ -19261,6 +19394,7 @@ const RAW_RUNTIME_STATE =
           ["@storybook/test-runner", "npm:0.16.0"],\
           ["@storybook/testing-library", "npm:0.2.2"],\
           ["@types/express", "npm:4.17.21"],\
+          ["@types/lodash", "npm:4.14.202"],\
           ["@types/pouchdb", "npm:6.4.2"],\
           ["@types/react", "npm:18.2.42"],\
           ["@types/react-dom", "npm:18.2.17"],\
@@ -19285,6 +19419,7 @@ const RAW_RUNTIME_STATE =
           ["http-server", "npm:14.1.1"],\
           ["isbot", "npm:3.7.1"],\
           ["lightningcss", "npm:1.22.1"],\
+          ["lodash", "npm:4.17.21"],\
           ["msw", "virtual:2ecf2631eed8f9581b10bde35df160d8e7948b331b1670a44dbc7e85249a811665954336001d64d1d8756f7e69cc129bdae83d1beca10aa2069e2a3a552ee6d6#npm:1.3.2"],\
           ["msw-storybook-addon", "virtual:2ecf2631eed8f9581b10bde35df160d8e7948b331b1670a44dbc7e85249a811665954336001d64d1d8756f7e69cc129bdae83d1beca10aa2069e2a3a552ee6d6#npm:1.10.0"],\
           ["path", "npm:0.12.7"],\

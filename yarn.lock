@@ -1500,6 +1500,56 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@dipscope/entity-store@npm:^2.0.3":
+  version: 2.0.3
+  resolution: "@dipscope/entity-store@npm:2.0.3"
+  dependencies:
+    tslib: "npm:^2.0.1"
+  peerDependencies:
+    "@dipscope/type-manager": ^7.1.1
+    lodash: ^4.17.0
+  checksum: 6795dd9f73ea328f8496828340382937d497fa4c108e40a65f5a6f0f4e5d2b7edfe2132bf8ce00b2410914febb3abf148e76e326174374ac2b8da5bd37fb4c98
+  languageName: node
+  linkType: hard
+
+"@dipscope/in-memory-entity-provider@npm:^2.0.0":
+  version: 2.0.0
+  resolution: "@dipscope/in-memory-entity-provider@npm:2.0.0"
+  dependencies:
+    tslib: "npm:^2.0.1"
+  peerDependencies:
+    "@dipscope/entity-store": ^2.0.0
+    "@dipscope/type-manager": ^7.0.0
+    lodash: ^4.17.0
+  checksum: ae2447d1229f095074d9402c228a195df8fa84be0e9e2aca037c13bf77daaa1133516f49e25403a16e999e658c9c183a24fc1584f04d2129feac7271f23312a1
+  languageName: node
+  linkType: hard
+
+"@dipscope/json-api-entity-provider@npm:^2.2.0":
+  version: 2.2.0
+  resolution: "@dipscope/json-api-entity-provider@npm:2.2.0"
+  dependencies:
+    cross-fetch: "npm:^3.1.5"
+    tslib: "npm:^2.0.1"
+  peerDependencies:
+    "@dipscope/entity-store": ^2.0.3
+    "@dipscope/type-manager": ^7.1.1
+    lodash: ^4.17.0
+  checksum: 7e7f1bea6e7f063e182fa88e4e9d86dd419a62afa615cd242c3e42b0997810099b92f1b734fc52a6a3431ca899ea45cc87e3263953718e392eb206cfe88530db
+  languageName: node
+  linkType: hard
+
+"@dipscope/type-manager@npm:^7.2.0":
+  version: 7.2.0
+  resolution: "@dipscope/type-manager@npm:7.2.0"
+  dependencies:
+    tslib: "npm:^2.0.1"
+  peerDependencies:
+    lodash: ^4.17.0
+  checksum: e7b1ef98ac46b09292656bc35c06c8e2e503e03d558cd873dce3dfee9c36db65da412e91ae3f1e0e722a50786658fc633d40466b276637b4cec8e4f33d0d83a5
+  languageName: node
+  linkType: hard
+
 "@discoveryjs/json-ext@npm:^0.5.3":
   version: 0.5.7
   resolution: "@discoveryjs/json-ext@npm:0.5.7"
@@ -5950,7 +6000,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/lodash@npm:^4.14.167":
+"@types/lodash@npm:^4, @types/lodash@npm:^4.14.167":
   version: 4.14.202
   resolution: "@types/lodash@npm:4.14.202"
   checksum: 6064d43c8f454170841bd67c8266cc9069d9e570a72ca63f06bceb484cb4a3ee60c9c1f305c1b9e3a87826049fd41124b8ef265c4dd08b00f6766609c7fe9973
@@ -8061,6 +8111,15 @@ __metadata:
   bin:
     create-jest: bin/create-jest.js
   checksum: e7e54c280692470d3398f62a6238fd396327e01c6a0757002833f06d00afc62dd7bfe04ff2b9cd145264460e6b4d1eb8386f2925b7e567f97939843b7b0e812f
+  languageName: node
+  linkType: hard
+
+"cross-fetch@npm:^3.1.5":
+  version: 3.1.8
+  resolution: "cross-fetch@npm:3.1.8"
+  dependencies:
+    node-fetch: "npm:^2.6.12"
+  checksum: 4c5e022ffe6abdf380faa6e2373c0c4ed7ef75e105c95c972b6f627c3f083170b6886f19fb488a7fa93971f4f69dcc890f122b0d97f0bf5f41ca1d9a8f58c8af
   languageName: node
   linkType: hard
 
@@ -13251,7 +13310,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"node-fetch@npm:^2, node-fetch@npm:^2.0.0, node-fetch@npm:^2.6.7":
+"node-fetch@npm:^2, node-fetch@npm:^2.0.0, node-fetch@npm:^2.6.12, node-fetch@npm:^2.6.7":
   version: 2.7.0
   resolution: "node-fetch@npm:2.7.0"
   dependencies:
@@ -13948,6 +14007,10 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "polyverse-vite@workspace:."
   dependencies:
+    "@dipscope/entity-store": "npm:^2.0.3"
+    "@dipscope/in-memory-entity-provider": "npm:^2.0.0"
+    "@dipscope/json-api-entity-provider": "npm:^2.2.0"
+    "@dipscope/type-manager": "npm:^7.2.0"
     "@reduxjs/toolkit": "npm:^1.9.7"
     "@refinedev/core": "npm:^4.44.12"
     "@storybook/addon-essentials": "npm:^7.6.4"
@@ -13962,6 +14025,7 @@ __metadata:
     "@storybook/test-runner": "npm:^0.16.0"
     "@storybook/testing-library": "npm:^0.2.2"
     "@types/express": "npm:^4.17.20"
+    "@types/lodash": "npm:^4"
     "@types/pouchdb": "npm:^6.4.2"
     "@types/react": "npm:^18.2.15"
     "@types/react-dom": "npm:^18.2.7"
@@ -13986,6 +14050,7 @@ __metadata:
     http-server: "npm:^14.1.1"
     isbot: "npm:^3.7.0"
     lightningcss: "npm:^1.22.1"
+    lodash: "npm:^4.17.21"
     msw: "npm:<2.0.0"
     msw-storybook-addon: "npm:^1.10.0"
     path: "npm:^0.12.7"
@@ -14008,6 +14073,7 @@ __metadata:
     xstate: "npm:^5.2.0"
   peerDependencies:
     msw: <2.0.0
+    typescript: ">=4.4.0 <5.3.0-0"
     vite: 4.2.0
   languageName: unknown
   linkType: soft

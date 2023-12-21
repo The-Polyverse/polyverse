@@ -1,21 +1,20 @@
 import { EntityId, createEntityAdapter, createSelector } from "@reduxjs/toolkit";
 import Message from "../../types/message";
 import { State } from "../../types/state";
-// import { RootState } from "../store";
 
 export default function createMessageEntity() {
   const entity = createEntityAdapter<Message>();
 
   const {
-    selectById: selectMessageById,
-    selectIds: selectMessageIds,
-    selectEntities: selectMessageEntities,
-    selectAll: selectAllMessages,
-    selectTotal: selectTotalMessages,
+    selectById,
+    selectIds,
+    selectEntities,
+    selectAll,
+    selectTotal,
   } = entity.getSelectors((state: State) => state.messages);
 
-  const selectMessagesByIds = createSelector(
-    [selectAllMessages, selectMessageIds, (_, ids: EntityId[]) => ids],
+  const selectByIds = createSelector(
+    [selectAll, selectIds, (_, ids: EntityId[]) => ids],
     (allMessages, allIds, ids) =>
       allMessages.filter((message) =>
         ids.filter((id) => allIds.includes(id)).includes(message.id!)
@@ -23,16 +22,17 @@ export default function createMessageEntity() {
   );
 
   const selectors = {
-    selectMessageById,
-    selectMessageIds,
-    selectMessageEntities,
-    selectAllMessages,
-    selectTotalMessages,
-    selectMessagesByIds,
+    selectById,
+    selectIds,
+    selectEntities,
+    selectAll,
+    selectTotal,
+    selectByIds,
   };
 
   return {
     selectors,
-    entity
+    entity,
+    getInitialState: entity.getInitialState,
   }
 }

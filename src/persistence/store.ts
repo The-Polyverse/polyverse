@@ -16,15 +16,14 @@ import {
 import { setupListeners } from "@reduxjs/toolkit/query";
 
 import type { State, Entity } from "../types";
-import createMessagesSlice from "./messages/slice";
 import createCache from "./cache";
 
+import createMessageEntity from "./messages/entity";
+import createMessagesSlice from "./messages/slice";
+
 const initialState: State = {
-  messages: {
-    ids: [],
-    entities: {},
-  },
-  domainEvents: { actions: [], last: null },
+  messages: createMessageEntity().entity.getInitialState(),
+  crudActions: { actions: [], last: null },
   transactions: "idle",
 };
 
@@ -39,8 +38,8 @@ export const addMany = createAction<Entity[]>("entity/addMany");
 export const updateMany = createAction<Update<Entity>[]>("entity/updateMany");
 export const removeMany = createAction<EntityId[]>("entity/removeMany");
 
-// TODO: change this to `runTransaction` and make it compatible with all the CRUD actions
-export const addOneService = createAsyncThunk(
+// TODO: change this to make it compatible with all the CRUD actions
+export const runTransaction = createAsyncThunk(
   "service/entity/add",
   async (entity: Entity, thunkApi) => {
     const { dispatch } = thunkApi;
@@ -49,8 +48,18 @@ export const addOneService = createAsyncThunk(
   }
 );
 
+const wrapInTransaction = createAction(
+  "transaction/wrap",
+  // TODO: Wrap each entity action to include transaction id
+  (action: AnyAction) => {
+    return { payload: action.payload };
+  }
+);
+
+const noop = createAction("noop");
+
 export default function createStore(preloadedState: State = initialState) {
-  const messages = createMessagesSlice(preloadedState.messages);
+  const entitiesSlice = createMessagesSlice(preloadedState.messages);
   const listener = createListenerMiddleware();
 
   listener.startListening({
@@ -68,16 +77,15 @@ export default function createStore(preloadedState: State = initialState) {
       listenerApi.dispatch(startTransaction());
 
       try {
-        const { actions } = messages;
+        const { actions } = entitiesSlice;
 
         const actionMap = new Map<AnyAction, AnyAction>([
-          // TODO: Wrap each entity action to include transaction id
-          [addOne, actions.addOne],
-          [updateOne, actions.updateOne],
-          [removeOne, actions.removeOne],
-          [addMany, actions.addMany],
-          [updateMany, actions.updateMany],
-          [removeMany, actions.removeMany],
+          [addOne, wrapInTransaction(actions.addOne)],
+          [updateOne, wrapInTransaction(actions.updateOne)],
+          [removeOne, wrapInTransaction(actions.removeOne)],
+          [addMany, wrapInTransaction(actions.addMany)],
+          [updateMany, wrapInTransaction(actions.updateMany)],
+          [removeMany, wrapInTransaction(actions.removeMany)],
         ]);
 
         const actionHandler = actionMap.get(action);
@@ -111,9 +119,12 @@ export default function createStore(preloadedState: State = initialState) {
       );
   });
 
+  const selectTransactionStarted = (state: State) =>
+    state.transactions == "started";
+
   // TODO: Track which transaction the events belong to. Rename to `actions`
-  const domainEvents = createSlice({
-    name: "domainEvents",
+  const crudActions = createSlice({
+    name: "crudActions",
     initialState: { actions: [], last: null } as {
       actions: Action[];
       last: Action | null;
@@ -132,65 +143,58 @@ export default function createStore(preloadedState: State = initialState) {
     },
   });
 
+  const selectActionsNotEmpty = (state: State) =>
+    state.crudActions.actions.length > 0;
+  const selectLastAction = (state: State) => state.crudActions.last;
+
   const transactionMiddleware: Middleware =
     ({ getState, dispatch }) =>
     (next) =>
     (action) => {
-      const { push, shift, clear } = domainEvents.actions;
-      const {
-        addOne,
-        updateOne,
-        removeOne,
-        addMany,
-        updateMany,
-        removeMany,
-        reset,
-      } = messages.actions;
-      const isCrudAction = isAnyOf(
-        addOne,
-        updateOne,
-        removeOne,
-        addMany,
-        updateMany,
-        removeMany
-      );
-      // Move to selector
-      const transactionStarted = getState().transactions == "started";
-      const committing = commitTransaction.match(action);
-      const rollingBack = rollbackTransaction.match(action);
+      const actions = crudActions.actions;
+      const entities = entitiesSlice.actions;
 
-      // TODO: Fix `dispatch` calls to be async, return result of calls to `next`
-      if (isCrudAction(action) && transactionStarted) {
-        dispatch(push(action));
-      } else if (transactionStarted && committing) {
-        // we need to update the state to 'idle' (fix: `committing`) before being able to dispatch the domain events
-        next(action);
+      if (selectTransactionStarted(getState())) {
+        if (wrapInTransaction.match(action)) {
+          // save action for when the transaction is committed
+          void (async () => dispatch(actions.push(action)))();
 
-        // save a copy of the state before dispatching the domain events
-        const originalState = getState();
-        let state = originalState;
+          // switch out the action for a noop so that it doesn't get dispatched
+          return next(noop());
+        } else if (commitTransaction.match(action)) {
+          // dispatch the original action to to set the transaction
+          // state to `idle` so that the next action can be dispatched
+          // without being converted to a noop
+          const result = next(action);
 
-        // dispatch the domain events, one by one, and rollback if any one of them fails
-        // TODO: all of this has to be async
-        while (state.actions.length > 0) {
-          dispatch(shift());
+          void (async () => {
+            // save a copy of the state before dispatching the domain events
+            const originalState = getState();
+            let state = originalState;
 
-          state = getState();
+            // dispatch the domain events, one by one, and rollback if any one of them fails
+            while (selectActionsNotEmpty(state)) {
+              dispatch(actions.shift());
 
-          try {
-            dispatch(state.domainEvents.last);
-          } catch (error) {
-            console.error(error);
+              state = getState();
 
-            dispatch(reset(originalState.messages));
-            dispatch(rollbackTransaction());
-          }
+              try {
+                dispatch(selectLastAction(state)!);
+              } catch (error) {
+                console.error(error);
+
+                dispatch(entities.reset(originalState.messages));
+                dispatch(rollbackTransaction());
+              }
+            }
+          })();
+          return result;
+        } else if (rollbackTransaction.match(action)) {
+          void (async () => dispatch(actions.clear()))();
+          return next(action);
         }
-      } else if (transactionStarted && rollingBack) {
-        dispatch(clear());
-        next(action);
       } else {
-        next(action);
+        return next(action);
       }
     };
 
@@ -201,8 +205,8 @@ export default function createStore(preloadedState: State = initialState) {
     reducer: {
       transactions,
 
-      messages: messages.reducer,
-      domainEvents: domainEvents.reducer,
+      messages: entitiesSlice.reducer,
+      crudActions: crudActions.reducer,
 
       [cache.reducerPath]: cache.reducer,
     },

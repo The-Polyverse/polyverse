@@ -1,8 +1,13 @@
-import { Action } from "@reduxjs/toolkit";
-import type { MessageEntity } from "./message";
+import { Action, EntityState } from "@reduxjs/toolkit";
+import Message from "./message";
+
+export type Entity = EntityState<Message>;
+
+export enum EntityType {
+  Messages = "messages",
+}
 
 export type State = {
-  messages: MessageEntity;
-  domainEvents: { actions: Action[], last: Action | null};
-  transactions: "idle" | "pending";
-};
+  crudActions: { actions: Action[]; last: Action | null };
+  transactions: "idle" | "started";
+} & { [K in EntityType]: Entity };

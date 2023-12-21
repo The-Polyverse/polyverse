@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import createMessageSlice from './messageSlice';
+import createMessagesSlice from './messageSlice';
 
 const { reducer, actions: {
   addMessage,
@@ -8,7 +8,7 @@ const { reducer, actions: {
   addMessages,
   updateMessages,
   removeMessages,
-} } = createMessageSlice();
+} } = createMessagesSlice();
 
 describe('messageSlice', () => {
   it('addMessge', () => {

@@ -7,19 +7,24 @@ const initialState: EntityState<Message> = {
   entities: {},
 };
 
-export default function createMessageSlice(state: EntityState<Message> = initialState) {
+export default function createMessagesSlice(
+  state: EntityState<Message> = initialState
+) {
   const { entity } = createMessageEntity();
   const slice = createSlice({
     name: "messages",
     initialState: entity.getInitialState(state),
     reducers: {
-      addMessage: entity.addOne,
-      updateMessage: entity.updateOne,
-      removeMessage: entity.removeOne,
-      addMessages: entity.addMany,
-      updateMessages: entity.updateMany,
-      removeMessages: entity.removeMany,
-      upsertOne: entity.upsertOne,
+      addOne: entity.addOne,
+      updateOne: entity.updateOne,
+      removeOne: entity.removeOne,
+      addMany: entity.addMany,
+      updateMany: entity.updateMany,
+      removeMany: entity.removeMany,
+      reset: (state, action) => {
+        state.ids = action.payload.ids;
+        state.entities = action.payload.entities;
+      },
     },
   });
 

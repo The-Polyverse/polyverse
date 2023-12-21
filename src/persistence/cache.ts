@@ -1,22 +1,29 @@
 import { BaseQueryFn, createApi } from "@reduxjs/toolkit/query";
-import Message from "../types/message";
-import { EntityId } from "@reduxjs/toolkit";
+import type { EntityId } from "@reduxjs/toolkit";
+import type { Entity } from "../types";
 
 type QueryFn = BaseQueryFn<
-{
-  resource: string;
-  method: string;
-  record?: Message | Partial<Message>;
-  records?: Message[] | Partial<Message>[];
-  id?: EntityId;
-  ids?: EntityId[];
-},
-unknown,
-unknown
+  {
+    resource: string;
+    method: string;
+    record?: Entity | Partial<Entity>;
+    records?: Entity[] | Partial<Entity>[];
+    id?: EntityId;
+    ids?: EntityId[];
+  },
+  unknown,
+  unknown
 >;
 
 export default function createCache() {
-  const baseQuery: QueryFn = ({ resource, method, record, records, id, ids }) => {
+  const baseQuery: QueryFn = ({
+    resource,
+    method,
+    record,
+    records,
+    id,
+    ids,
+  }) => {
     console.log({ resource, method, record, records, id, ids });
     return {
       data: {},
@@ -27,9 +34,7 @@ export default function createCache() {
     reducerPath: "cache",
     baseQuery,
     tagTypes: ["Entities"],
-    endpoints: () => ({
-
-    }),
+    endpoints: () => ({}),
   });
 
   return cache;

@@ -39,6 +39,7 @@ export const addMany = createAction<Entity[]>("entity/addMany");
 export const updateMany = createAction<Update<Entity>[]>("entity/updateMany");
 export const removeMany = createAction<EntityId[]>("entity/removeMany");
 
+// TODO: change this to `runTransaction` and make it compatible with all the CRUD actions
 export const addOneService = createAsyncThunk(
   "service/entity/add",
   async (entity: Entity, thunkApi) => {
@@ -63,12 +64,14 @@ export default function createStore(preloadedState: State = initialState) {
     ),
 
     effect: (action, listenerApi) => {
+      // TODO: include transaction uuid
       listenerApi.dispatch(startTransaction());
 
       try {
         const { actions } = messages;
 
         const actionMap = new Map<AnyAction, AnyAction>([
+          // TODO: Wrap each entity action to include transaction id
           [addOne, actions.addOne],
           [updateOne, actions.updateOne],
           [removeOne, actions.removeOne],
@@ -93,6 +96,8 @@ export default function createStore(preloadedState: State = initialState) {
     },
   });
 
+  // TODO: Make this into a full fledged entity adapted slice tracking state of individual transactions
+  // TODO: Track states `started`, `committing`, `rollingBack`
   const transactions = createReducer("idle", (builder) => {
     builder
       .addCase(startTransaction, (state) =>
@@ -106,6 +111,7 @@ export default function createStore(preloadedState: State = initialState) {
       );
   });
 
+  // TODO: Track which transaction the events belong to. Rename to `actions`
   const domainEvents = createSlice({
     name: "domainEvents",
     initialState: { actions: [], last: null } as {
@@ -148,14 +154,16 @@ export default function createStore(preloadedState: State = initialState) {
         updateMany,
         removeMany
       );
+      // Move to selector
       const transactionStarted = getState().transactions == "started";
       const committing = commitTransaction.match(action);
       const rollingBack = rollbackTransaction.match(action);
 
+      // TODO: Fix `dispatch` calls to be async, return result of calls to `next`
       if (isCrudAction(action) && transactionStarted) {
         dispatch(push(action));
       } else if (transactionStarted && committing) {
-        // we need to update the state to 'idle' before being able to dispatch the domain events
+        // we need to update the state to 'idle' (fix: `committing`) before being able to dispatch the domain events
         next(action);
 
         // save a copy of the state before dispatching the domain events
@@ -163,6 +171,7 @@ export default function createStore(preloadedState: State = initialState) {
         let state = originalState;
 
         // dispatch the domain events, one by one, and rollback if any one of them fails
+        // TODO: all of this has to be async
         while (state.actions.length > 0) {
           dispatch(shift());
 

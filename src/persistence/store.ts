@@ -287,22 +287,21 @@ export default function createStore(preloadedState: State | undefined) {
 
               state = getState();
 
-              const last = selectLastAction(state);
+              const last = selectLastAction(state)!;
 
               try {
                 const {
-                  payload: { action: action },
-                } = last!;
+                  payload: { action },
+                } = last;
 
                 dispatch(action);
               } catch (error) {
-                const {
-                  payload: { type: type },
-                } = last!;
-                type;
-                const entities = entitiesSlice[type].actions;
-
                 console.error(error);
+                
+                const {
+                  payload: { type },
+                } = last;
+                const entities = entitiesSlice[type].actions;
 
                 dispatch(entities.reset(originalState.messages));
                 dispatch(rollbackTransaction());
@@ -333,7 +332,7 @@ export default function createStore(preloadedState: State | undefined) {
       transactions,
 
       ...entityReducers,
-      
+
       crudActions: crudActions.reducer,
 
       [cache.reducerPath]: cache.reducer,

@@ -87,18 +87,20 @@ export const runTransaction = createAsyncThunk(
     const { dispatch } = thunkApi;
 
     if ("entity" in entityAction) {
-      dispatch(addOne(entityAction));
+      return dispatch(addOne(entityAction));
     } else if ("update" in entityAction) {
-      dispatch(updateOne(entityAction));
+      return dispatch(updateOne(entityAction));
     } else if ("id" in entityAction) {
-      dispatch(removeOne(entityAction));
+      return dispatch(removeOne(entityAction));
     } else if ("entities" in entityAction) {
-      dispatch(addMany(entityAction));
+      return dispatch(addMany(entityAction));
     } else if ("updates" in entityAction) {
-      dispatch(updateMany(entityAction));
+      return dispatch(updateMany(entityAction));
     } else if ("ids" in entityAction) {
-      dispatch(removeMany(entityAction));
+      return dispatch(removeMany(entityAction));
     }
+
+    throw new Error("Not implemented");
   }
 );
 
@@ -129,7 +131,6 @@ export default function createStore(preloadedState: State | undefined) {
     );
 
     const initialState: State = {
-      // messages: entitiesSlice.getInitialState(),
       ...initialEntityStates,
       crudActions: { actions: [], last: null },
       transactions: "idle",
@@ -284,31 +285,28 @@ export default function createStore(preloadedState: State | undefined) {
             // dispatch the domain events, one by one, and rollback if any one of them fails
             while (selectActionsNotEmpty(state)) {
               dispatch(actions.shift());
-
               state = getState();
+
+              // `selectActionsNotEmpty` and `shift` ensures this is cannot be null
+              const last = selectLastAction(state)!;
+
               try {
-                const last = selectLastAction(state)!;
-              
-                try {
-                  const {
-                    payload: { action },
-                  } = last;
+                // unwrap the action and dispatch it
+                const {
+                  payload: { action },
+                } = last;
 
-                  dispatch(action);
-                } catch (error) {
-                  console.error(error);
-                  
-                  const {
-                    payload: { type },
-                  } = last;
-                  const entities = entitiesSlice[type].actions;
-
-                  dispatch(entities.reset(originalState.messages));
-                  dispatch(rollbackTransaction());
-                }
+                dispatch(action);
               } catch (error) {
                 console.error(error);
-                
+
+                // restore the state of the entity to what it was before the transaction started
+                const {
+                  payload: { type },
+                } = last;
+                const entities = entitiesSlice[type].actions;
+
+                dispatch(entities.reset(originalState.messages));
                 dispatch(rollbackTransaction());
               }
             }

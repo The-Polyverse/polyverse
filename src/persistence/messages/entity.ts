@@ -31,8 +31,7 @@ export default function createMessageEntity() {
   };
 
   return {
+    ...entity,
     selectors,
-    entity,
-    getInitialState: entity.getInitialState,
   }
 }

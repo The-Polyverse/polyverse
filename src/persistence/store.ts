@@ -3,7 +3,7 @@ import {
   AnyAction,
   EntityId,
   Middleware,
-  PayloadAction,
+  Reducer,
   Update,
   configureStore,
   createAction,
@@ -18,48 +18,125 @@ import { setupListeners } from "@reduxjs/toolkit/query";
 import type { State, Entity } from "../types";
 import createCache from "./cache";
 
-import createMessageEntity from "./messages/entity";
-import createMessagesSlice from "./messages/slice";
-
-const initialState: State = {
-  messages: createMessageEntity().entity.getInitialState(),
-  crudActions: { actions: [], last: null },
-  transactions: "idle",
-};
+import { EntityStates, EntityType, EntityUnionType } from "../types/state";
+import entitySliceFactories from "./entities";
 
 export const startTransaction = createAction("transaction/start");
 export const commitTransaction = createAction("transaction/commit");
 export const rollbackTransaction = createAction("transaction/rollback");
 
-export const addOne = createAction<Entity>("entity/addOne");
-export const updateOne = createAction<Update<Entity>>("entity/updateOne");
-export const removeOne = createAction<EntityId>("entity/removeOne");
-export const addMany = createAction<Entity[]>("entity/addMany");
-export const updateMany = createAction<Update<Entity>[]>("entity/updateMany");
-export const removeMany = createAction<EntityId[]>("entity/removeMany");
+// single entity CRUD actions
+export const addOne = createAction<{ type: EntityUnionType; entity: Entity }>(
+  "entity/addOne"
+);
 
-// TODO: change this to make it compatible with all the CRUD actions
+export const updateOne = createAction<{
+  type: EntityUnionType;
+  update: Update<Entity>;
+}>("entity/updateOne");
+
+export const removeOne = createAction<{ type: EntityUnionType; id: EntityId }>(
+  "entity/removeOne"
+);
+
+// multiple entity CRUD actions
+export const addMany = createAction<{
+  type: EntityUnionType;
+  entities: Entity[];
+}>("entity/addMany");
+
+export const updateMany = createAction<{
+  type: EntityUnionType;
+  updates: Update<Entity>[];
+}>("entity/updateMany");
+
+export const removeMany = createAction<{
+  type: EntityUnionType;
+  ids: EntityId[];
+}>("entity/removeMany");
+
+export type EntityAction =
+  | {
+      type: EntityUnionType;
+      entity: Entity;
+    }
+  | {
+      type: EntityUnionType;
+      update: Update<Entity>;
+    }
+  | {
+      type: EntityUnionType;
+      id: EntityId;
+    }
+  | {
+      type: EntityUnionType;
+      entities: Entity[];
+    }
+  | {
+      type: EntityUnionType;
+      updates: Update<Entity>[];
+    }
+  | {
+      type: EntityUnionType;
+      ids: EntityId[];
+    };
+
 export const runTransaction = createAsyncThunk(
-  "service/entity/add",
-  async (entity: Entity, thunkApi) => {
+  "transaction/run",
+  async (entityAction: EntityAction, thunkApi) => {
     const { dispatch } = thunkApi;
 
-    dispatch(addOne(entity));
+    if ("entity" in entityAction) {
+      dispatch(addOne(entityAction));
+    } else if ("update" in entityAction) {
+      dispatch(updateOne(entityAction));
+    } else if ("id" in entityAction) {
+      dispatch(removeOne(entityAction));
+    } else if ("entities" in entityAction) {
+      dispatch(addMany(entityAction));
+    } else if ("updates" in entityAction) {
+      dispatch(updateMany(entityAction));
+    } else if ("ids" in entityAction) {
+      dispatch(removeMany(entityAction));
+    }
   }
 );
 
 const wrapInTransaction = createAction(
   "transaction/wrap",
   // TODO: Wrap each entity action to include transaction id
-  (action: AnyAction) => {
-    return { payload: action.payload };
+  (type: EntityType, action: AnyAction) => {
+    return { payload: { type, action } };
   }
 );
 
 const noop = createAction("noop");
 
-export default function createStore(preloadedState: State = initialState) {
-  const entitiesSlice = createMessagesSlice(preloadedState.messages);
+export default function createStore(preloadedState: State | undefined) {
+  const sliceFactories = entitySliceFactories();
+  const entitiesSlice = Object.values(EntityType).reduce(
+    (slices, type) => Object.assign(slices, { [type]: sliceFactories[type]() }),
+    {} as { [K in EntityType]: ReturnType<(typeof sliceFactories)[EntityType]> }
+  );
+
+  if (preloadedState === undefined) {
+    const initialEntityStates = Object.values(EntityType).reduce(
+      (states, type) =>
+        Object.assign(states, {
+          [type]: entitiesSlice[type].getInitialState(),
+        }),
+      {} as { [K in EntityType]: EntityStates }
+    );
+
+    const initialState: State = {
+      // messages: entitiesSlice.getInitialState(),
+      ...initialEntityStates,
+      crudActions: { actions: [], last: null },
+      transactions: "idle",
+    };
+    preloadedState = initialState;
+  }
+
   const listener = createListenerMiddleware();
 
   listener.startListening({
@@ -72,29 +149,41 @@ export default function createStore(preloadedState: State = initialState) {
       removeMany
     ),
 
-    effect: (action, listenerApi) => {
+    effect: (action: { payload: EntityAction } & Action, listenerApi) => {
       // TODO: include transaction uuid
       listenerApi.dispatch(startTransaction());
 
       try {
-        const { actions } = entitiesSlice;
+        const { actions: actions } = entitiesSlice[action.payload.type];
 
-        const actionMap = new Map<AnyAction, AnyAction>([
-          [addOne, wrapInTransaction(actions.addOne)],
-          [updateOne, wrapInTransaction(actions.updateOne)],
-          [removeOne, wrapInTransaction(actions.removeOne)],
-          [addMany, wrapInTransaction(actions.addMany)],
-          [updateMany, wrapInTransaction(actions.updateMany)],
-          [removeMany, wrapInTransaction(actions.removeMany)],
+        const transactionActionMap = new Map<AnyAction, AnyAction>([
+          [addOne, wrapInTransaction(action.payload.type, actions.addOne)],
+          [
+            updateOne,
+            wrapInTransaction(action.payload.type, actions.updateOne),
+          ],
+          [
+            removeOne,
+            wrapInTransaction(action.payload.type, actions.removeOne),
+          ],
+          [addMany, wrapInTransaction(action.payload.type, actions.addMany)],
+          [
+            updateMany,
+            wrapInTransaction(action.payload.type, actions.updateMany),
+          ],
+          [
+            removeMany,
+            wrapInTransaction(action.payload.type, actions.removeMany),
+          ],
         ]);
 
-        const actionHandler = actionMap.get(action);
+        const transactionAction = transactionActionMap.get(action);
 
-        if (actionHandler == null) {
+        if (transactionAction == null) {
           throw new Error("Unknown action");
         }
 
-        listenerApi.dispatch(actionHandler);
+        listenerApi.dispatch(transactionAction);
         listenerApi.dispatch(commitTransaction());
       } catch (error) {
         console.error(error);
@@ -126,12 +215,33 @@ export default function createStore(preloadedState: State = initialState) {
   const crudActions = createSlice({
     name: "crudActions",
     initialState: { actions: [], last: null } as {
-      actions: Action[];
-      last: Action | null;
+      actions: Array<{
+        payload: {
+          type: EntityType;
+          action: AnyAction;
+        };
+        type: "transaction/wrap";
+      }>;
+      last: {
+        payload: {
+          type: EntityType;
+          action: AnyAction;
+        };
+        type: "transaction/wrap";
+      } | null;
     },
     reducers: {
-      push: (state, action: PayloadAction<Action>) => {
-        state.actions.push(action.payload);
+      push: (
+        state,
+        action: {
+          payload: {
+            type: EntityType;
+            action: AnyAction;
+          };
+          type: string;
+        } & Action
+      ) => {
+        state.actions.push(action);
       },
       shift: (state) => {
         state.last = state.actions.shift() ?? null;
@@ -152,12 +262,11 @@ export default function createStore(preloadedState: State = initialState) {
     (next) =>
     (action) => {
       const actions = crudActions.actions;
-      const entities = entitiesSlice.actions;
 
       if (selectTransactionStarted(getState())) {
         if (wrapInTransaction.match(action)) {
           // save action for when the transaction is committed
-          void (async () => dispatch(actions.push(action)))();
+          void (async () => dispatch(actions.push(action.payload)))();
 
           // switch out the action for a noop so that it doesn't get dispatched
           return next(noop());
@@ -178,9 +287,21 @@ export default function createStore(preloadedState: State = initialState) {
 
               state = getState();
 
+              const last = selectLastAction(state);
+
               try {
-                dispatch(selectLastAction(state)!);
+                const {
+                  payload: { action: action },
+                } = last!;
+
+                dispatch(action);
               } catch (error) {
+                const {
+                  payload: { type: type },
+                } = last!;
+                type;
+                const entities = entitiesSlice[type].actions;
+
                 console.error(error);
 
                 dispatch(entities.reset(originalState.messages));
@@ -200,12 +321,19 @@ export default function createStore(preloadedState: State = initialState) {
 
   const cache = createCache();
 
+  const entityReducers = Object.values(EntityType).reduce(
+    (reducers, type) =>
+      Object.assign(reducers, { [type]: entitiesSlice[type].reducer }),
+    {} as { [K in EntityType]: Reducer<EntityStates> }
+  );
+
   const store = configureStore({
     preloadedState,
     reducer: {
       transactions,
 
-      messages: entitiesSlice.reducer,
+      ...entityReducers,
+      
       crudActions: crudActions.reducer,
 
       [cache.reducerPath]: cache.reducer,

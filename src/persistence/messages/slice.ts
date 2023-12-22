@@ -10,7 +10,7 @@ const initialState: EntityState<Message> = {
 export default function createMessagesSlice(
   state: EntityState<Message> = initialState
 ) {
-  const { entity } = createMessageEntity();
+  const entity = createMessageEntity();
   const slice = createSlice({
     name: "messages",
     initialState: entity.getInitialState(state),
@@ -28,5 +28,5 @@ export default function createMessagesSlice(
     },
   });
 
-  return slice;
+  return { ...slice, ...entity };
 }

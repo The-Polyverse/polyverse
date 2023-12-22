@@ -286,24 +286,29 @@ export default function createStore(preloadedState: State | undefined) {
               dispatch(actions.shift());
 
               state = getState();
-
-              const last = selectLastAction(state)!;
-
               try {
-                const {
-                  payload: { action },
-                } = last;
+                const last = selectLastAction(state)!;
+              
+                try {
+                  const {
+                    payload: { action },
+                  } = last;
 
-                dispatch(action);
+                  dispatch(action);
+                } catch (error) {
+                  console.error(error);
+                  
+                  const {
+                    payload: { type },
+                  } = last;
+                  const entities = entitiesSlice[type].actions;
+
+                  dispatch(entities.reset(originalState.messages));
+                  dispatch(rollbackTransaction());
+                }
               } catch (error) {
                 console.error(error);
                 
-                const {
-                  payload: { type },
-                } = last;
-                const entities = entitiesSlice[type].actions;
-
-                dispatch(entities.reset(originalState.messages));
                 dispatch(rollbackTransaction());
               }
             }
